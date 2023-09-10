@@ -1,6 +1,6 @@
 import 'package:app/core/util/constants.dart';
 import 'package:app/onboarding/utils/constants.dart';
-import 'package:app/onboarding/widgets/common/sized_box.dart';
+import 'package:app/onboarding/presentation/widgets/common/sized_box.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
