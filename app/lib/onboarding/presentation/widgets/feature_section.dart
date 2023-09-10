@@ -11,19 +11,6 @@ class FeatureSection extends StatefulWidget {
   State<FeatureSection> createState() => _FeatureSectionState();
 }
 
-class FeatureModel {
-  String gif;
-  String heading;
-  String subHeading;
-  List<String> details;
-
-  FeatureModel(
-      {required this.gif,
-      required this.heading,
-      required this.subHeading,
-      required this.details});
-}
-
 class _FeatureSectionState extends State<FeatureSection> {
   int _currentIndex = 0;
   CarouselController buttonCarouselController = CarouselController();

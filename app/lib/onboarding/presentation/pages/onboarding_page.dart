@@ -1,11 +1,9 @@
 import 'package:app/core/util/constants.dart';
 import 'package:app/core/util/responsive/responsive_layout.dart';
+import 'package:app/onboarding/presentation/widgets/feature_section.dart';
+import 'package:app/onboarding/presentation/widgets/side_bar.dart';
 import 'package:app/onboarding/utils/constants.dart';
 import 'package:app/onboarding/presentation/widgets/common/sized_box.dart';
-import 'package:app/onboarding/widgets/feature_section.dart';
-import 'package:app/onboarding/widgets/hero_section.dart';
-import 'package:app/onboarding/widgets/navbar_section.dart';
-import 'package:app/onboarding/widgets/side_bar.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingPage extends StatelessWidget {

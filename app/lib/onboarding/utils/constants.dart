@@ -1,6 +1,6 @@
+import 'package:app/onboarding/domain/model.dart';
 // Pages constants
 // OnBoarding
-import 'package:app/onboarding/widgets/feature_section.dart';
 
 const double heightBetweenElementsDesktop = 56;
 const double heightBetweenElementsTablet = 48;
