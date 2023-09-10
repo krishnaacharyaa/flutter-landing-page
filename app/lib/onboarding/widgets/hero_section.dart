@@ -1,5 +1,5 @@
 import 'package:app/core/util/entities.dart';
-import 'package:app/core/util/responsive_text.dart';
+import 'package:app/core/util/responsive/responsive_text_style.dart';
 import 'package:flutter/material.dart';
 
 class HeroSection extends StatelessWidget {

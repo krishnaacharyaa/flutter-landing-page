@@ -1,8 +1,5 @@
-import 'package:app/onboarding/widgets/community_section.dart';
-import 'package:app/onboarding/widgets/feature_section.dart';
-import 'package:app/onboarding/widgets/hero_section.dart';
 import 'package:app/onboarding/widgets/navbar_section.dart';
-import 'package:app/onboarding/widgets/sideBar.dart';
+import 'package:app/onboarding/widgets/side_bar.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingPage extends StatelessWidget {

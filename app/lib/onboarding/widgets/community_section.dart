@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:scroll_loop_auto_scroll/scroll_loop_auto_scroll.dart';
-import 'package:flutter/material.dart';
 
 class CommunitySection extends StatefulWidget {
   const CommunitySection({Key? key}) : super(key: key);
 
   @override
-  _CommunitySectionState createState() => _CommunitySectionState();
+  State<CommunitySection> createState() => _CommunitySectionState();
 }
 
 class _CommunitySectionState extends State<CommunitySection> {

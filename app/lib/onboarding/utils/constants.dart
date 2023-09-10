@@ -1,6 +1,7 @@
-class OnBoardingConstants {
+// Nav elements
+const List<String> navItems = ["Product", "Subscribe", "About"];
+
 // NavBar Constants
-  static const double LOGO_SIZE_DESKTOP = 50;
-  static const double LOGO_SIZE_TABLET = 40;
-  static const double LOGO_SIZE_MOBILE = 30;
-}
+const double logoSizeDesktop = 50;
+const double logoSizeTablet = 40;
+const double logoSizeMobile = 30;

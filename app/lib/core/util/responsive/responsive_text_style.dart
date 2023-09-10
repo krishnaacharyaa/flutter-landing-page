@@ -1,25 +1,15 @@
 import 'package:app/core/util/entities.dart';
-import 'package:app/responsive.dart';
+import 'package:app/core/util/responsive/responsive_layout.dart';
 import 'package:flutter/material.dart';
 
 TextStyle getResponsiveTextStyle(
     BuildContext context, AppTextTheme appTextTheme) {
   final AppSize appSize = getAppSize(context);
 
-  return getTextStyle(context, appTextTheme, appSize);
+  return _getTextStyle(context, appTextTheme, appSize);
 }
 
-AppSize getAppSize(BuildContext context) {
-  if (Responsive.isDesktop(context)) {
-    return AppSize.desktop;
-  } else if (Responsive.isTablet(context)) {
-    return AppSize.tablet;
-  } else {
-    return AppSize.mobile;
-  }
-}
-
-TextStyle getTextStyle(
+TextStyle _getTextStyle(
     BuildContext context, AppTextTheme appTextTheme, AppSize appSize) {
   TextStyle? textStyle;
 
@@ -80,8 +70,8 @@ TextStyle? _getTextStyleForMobile(
     case AppTextTheme.headline:
       return theme.textTheme.headlineSmall;
     case AppTextTheme.title:
-      return theme.textTheme.titleSmall;
+      return theme.textTheme.titleMedium;
     case AppTextTheme.label:
-      return theme.textTheme.labelSmall;
+      return theme.textTheme.labelMedium;
   }
 }

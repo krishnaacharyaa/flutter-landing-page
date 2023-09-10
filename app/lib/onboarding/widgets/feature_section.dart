@@ -5,7 +5,7 @@ class FeatureSection extends StatefulWidget {
   const FeatureSection({Key? key}) : super(key: key);
 
   @override
-  _FeatureSectionState createState() => _FeatureSectionState();
+  State<FeatureSection> createState() => _FeatureSectionState();
 }
 
 class _FeatureSectionState extends State<FeatureSection> {

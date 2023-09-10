@@ -1,10 +1,12 @@
 import 'package:app/core/util/entities.dart';
-import 'package:app/core/util/responsive_text.dart';
+import 'package:app/core/util/responsive/responsive_text.dart';
+import 'package:app/core/util/responsive/responsive_text_style.dart';
+import 'package:app/onboarding/utils/constants.dart';
+import 'package:app/onboarding/widgets/common/call_out_button.dart';
 import 'package:app/onboarding/widgets/common/helpers.dart';
-import 'package:app/responsive.dart';
+import 'package:app/core/util/responsive/responsive_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../utils/constants.dart';
 
 class NavBarSection extends StatelessWidget {
   const NavBarSection({super.key});
@@ -15,9 +17,9 @@ class NavBarSection extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         const Logo(),
-        if (!Responsive.isMobile(context)) NavBarItems(),
-        if (!Responsive.isMobile(context)) const CallOutButtons(),
-        if (Responsive.isMobile(context))
+        if (!isMobile(context)) const NavBarItems(),
+        if (!isMobile(context)) const CallOutButtons(),
+        if (isMobile(context))
           IconButton(
               onPressed: () {
                 Scaffold.of(context).openEndDrawer();
@@ -33,42 +35,15 @@ class CallOutButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        OutlinedButton(
-            style: OutlinedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-                side: BorderSide(color: Theme.of(context).primaryColor)),
-            onPressed: () {},
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Text(
-                "Login",
-                style: getResponsiveTextStyle(context, AppTextTheme.title),
-              ),
-            )),
-        const SizedBoxWithWidth(),
-        FilledButton(
-            style: FilledButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20))),
-            onPressed: () {},
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Text(
-                "Join the Beta",
-                style: getResponsiveTextStyle(context, AppTextTheme.title),
-              ),
-            ))
-      ],
+    return const Row(
+      children: [AppOutlineButton(), AppSizedBoxOfWidth(), AppFilledButton()],
     );
   }
 }
 
 class NavBarItems extends StatelessWidget {
-  NavBarItems({super.key});
-  final List<String> navItems = ["Product", "Subscribe", "About"];
+  const NavBarItems({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -77,11 +52,12 @@ class NavBarItems extends StatelessWidget {
             .map(
               (item) => Row(
                 children: [
-                  Text(
-                    item,
-                    style: getResponsiveTextStyle(context, AppTextTheme.title),
+                  ResponsiveText(
+                    text: item,
+                    textStyle:
+                        getResponsiveTextStyle(context, AppTextTheme.title),
                   ),
-                  const SizedBoxWithWidth()
+                  const AppSizedBoxOfWidth()
                 ],
               ),
             )
@@ -98,9 +74,10 @@ class Logo extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Text("ImagineWorks",
-            style: getResponsiveTextStyle(context, AppTextTheme.headline)),
-        const SizedBoxWithWidth(),
+        ResponsiveText(
+            text: "ImagineWorks",
+            textStyle: getResponsiveTextStyle(context, AppTextTheme.headline)),
+        const AppSizedBoxOfWidth(),
         SvgPicture.asset(
           'svg/logo.svg',
           height: sizeOfLogo(context),
@@ -114,10 +91,10 @@ class Logo extends StatelessWidget {
 double sizeOfLogo(context) {
   switch (getAppSize(context)) {
     case AppSize.desktop:
-      return OnBoardingConstants.LOGO_SIZE_DESKTOP;
+      return logoSizeDesktop;
     case AppSize.tablet:
-      return OnBoardingConstants.LOGO_SIZE_TABLET;
+      return logoSizeTablet;
     default:
-      return OnBoardingConstants.LOGO_SIZE_MOBILE;
+      return logoSizeMobile;
   }
 }
