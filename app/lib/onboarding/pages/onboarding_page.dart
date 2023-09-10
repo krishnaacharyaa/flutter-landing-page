@@ -1,3 +1,4 @@
+import 'package:app/onboarding/widgets/feature_section.dart';
 import 'package:app/onboarding/widgets/hero_section.dart';
 import 'package:flutter/material.dart';
 
@@ -6,10 +7,11 @@ class OnBoardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [HeroSection()],
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [const HeroSection(), FeatureSection()],
       ),
     );
   }
