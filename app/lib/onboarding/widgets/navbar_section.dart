@@ -3,7 +3,7 @@ import 'package:app/core/util/responsive/responsive_text.dart';
 import 'package:app/core/util/responsive/responsive_text_style.dart';
 import 'package:app/onboarding/utils/constants.dart';
 import 'package:app/onboarding/widgets/common/call_out_button.dart';
-import 'package:app/onboarding/widgets/common/helpers.dart';
+import 'package:app/onboarding/widgets/common/sized_box.dart';
 import 'package:app/core/util/responsive/responsive_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

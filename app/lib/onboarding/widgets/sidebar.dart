@@ -1,6 +1,6 @@
 import 'package:app/onboarding/utils/constants.dart';
 import 'package:app/onboarding/widgets/common/call_out_button.dart';
-import 'package:app/onboarding/widgets/common/helpers.dart';
+import 'package:app/onboarding/widgets/common/sized_box.dart';
 import 'package:flutter/material.dart';
 
 class SideBar extends StatelessWidget {

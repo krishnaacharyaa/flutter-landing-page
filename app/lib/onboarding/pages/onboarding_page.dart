@@ -1,5 +1,5 @@
 import 'package:app/onboarding/widgets/navbar_section.dart';
-import 'package:app/onboarding/widgets/side_bar.dart';
+import 'package:app/onboarding/widgets/sidebar.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingPage extends StatelessWidget {
