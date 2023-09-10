@@ -1,3 +1,6 @@
+import 'package:app/core/util/constants.dart';
+import 'package:app/onboarding/utils/constants.dart';
+import 'package:app/onboarding/widgets/common/sized_box.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -8,14 +11,20 @@ class FeatureSection extends StatefulWidget {
   State<FeatureSection> createState() => _FeatureSectionState();
 }
 
-class _FeatureSectionState extends State<FeatureSection> {
-  final List<String> gifs = [
-    "gifs/background_removal.gif",
-    "gifs/background_removal.gif",
-    "gifs/background_removal.gif",
-    "gifs/background_removal.gif",
-  ];
+class FeatureModel {
+  String gif;
+  String heading;
+  String subHeading;
+  List<String> details;
 
+  FeatureModel(
+      {required this.gif,
+      required this.heading,
+      required this.subHeading,
+      required this.details});
+}
+
+class _FeatureSectionState extends State<FeatureSection> {
   int _currentIndex = 0;
   CarouselController buttonCarouselController = CarouselController();
   @override
@@ -29,49 +38,90 @@ class _FeatureSectionState extends State<FeatureSection> {
           children: <Widget>[
             CarouselSlider.builder(
               carouselController: buttonCarouselController,
-              itemCount: gifs.length,
+              itemCount: features.length,
               itemBuilder: (context, index, realIndex) {
-                return Container(
-                  padding: const EdgeInsets.all(16.0),
-                  color: Theme.of(context).primaryColor,
-                  child: Row(
-                    children: <Widget>[
-                      // Left side (GIF)
-                      Flexible(
-                        flex: 1,
+                return Row(
+                  children: <Widget>[
+                    // Left side (GIF)
+                    Flexible(
+                      flex: 1,
+                      child: ClipRRect(
+                        // Wrap the Image.asset with ClipRRect
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(213),
+                          bottomLeft: Radius.circular(218),
+                          bottomRight: Radius.circular(216),
+                        ),
                         child: Image.asset(
-                          gifs[index],
-                          fit: BoxFit.cover,
+                          features[index].gif,
+                          fit: BoxFit.fill,
+                          height: 400,
+                          width: double.infinity,
                         ),
                       ),
-                      const SizedBox(width: 16.0),
-                      // Right side (Content)
-                      Column(
+                    ),
+                    const AppSizedBoxOfWidth(width: 96.0),
+                    // Right side (Content)
+                    Flexible(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           Text(
-                            'Item $index',
+                            features[index].heading,
                             style: const TextStyle(
                                 fontSize: 24.0, fontWeight: FontWeight.bold),
                           ),
-                          const SizedBox(height: 8.0),
+                          const AppSizedBoxOfHeight(height: 16),
                           Text(
-                            'Description for Item $index goes here.',
+                            features[index].subHeading,
                             style: const TextStyle(fontSize: 16.0),
                           ),
+
+                          const AppSizedBoxOfHeight(height: 32),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: features[index]
+                                .details
+                                .map((e) => Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 16.0),
+                                      child: Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            padding: const EdgeInsets.all(4),
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                color: lightGreen),
+                                            child: const Icon(
+                                              Icons.done,
+                                              color: darkGreen,
+                                            ),
+                                          ),
+                                          const AppSizedBoxOfWidth(width: 16),
+                                          Container(child: Text(e)),
+                                        ],
+                                      ),
+                                    ))
+                                .toList(),
+                          )
                           // Add more content here as needed
                         ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 );
               },
               options: CarouselOptions(
-                enlargeFactor: 0.9,
+                viewportFraction: 1,
                 height: 400, // Expand to content height
                 enlargeCenterPage: true,
                 autoPlay: true,
-                autoPlayInterval: const Duration(seconds: 5),
+                autoPlayInterval: const Duration(seconds: 10),
                 autoPlayCurve: Curves.fastOutSlowIn,
                 enableInfiniteScroll: false,
                 initialPage: 0,
@@ -86,7 +136,11 @@ class _FeatureSectionState extends State<FeatureSection> {
             Positioned(
               left: 0,
               child: IconButton(
-                icon: const Icon(Icons.chevron_left),
+                icon: const Icon(
+                  color: Colors.grey,
+                  Icons.keyboard_arrow_left_rounded,
+                  size: 60,
+                ),
                 onPressed: () {
                   buttonCarouselController.previousPage();
                   if (_currentIndex > 0) {
@@ -100,10 +154,14 @@ class _FeatureSectionState extends State<FeatureSection> {
             Positioned(
               right: 0,
               child: IconButton(
-                icon: const Icon(Icons.chevron_right),
+                icon: const Icon(
+                  color: Colors.grey,
+                  Icons.keyboard_arrow_right_rounded,
+                  size: 60,
+                ),
                 onPressed: () {
                   buttonCarouselController.nextPage();
-                  if (_currentIndex < gifs.length - 1) {
+                  if (_currentIndex < features.length - 1) {
                     setState(() {
                       _currentIndex++;
                     });
@@ -113,16 +171,16 @@ class _FeatureSectionState extends State<FeatureSection> {
             ),
           ],
         ),
-        // Dots Indicator
+        const AppSizedBoxOfHeight(height: 32),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: gifs.asMap().entries.map((entry) {
+          children: features.asMap().entries.map((entry) {
             final int index = entry.key;
             final bool isActive = _currentIndex == index;
             return Container(
-              width: 10.0,
-              height: 10.0,
-              margin: const EdgeInsets.symmetric(horizontal: 4.0),
+              width: 20.0,
+              height: 20.0,
+              margin: const EdgeInsets.symmetric(horizontal: 16.0),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: isActive

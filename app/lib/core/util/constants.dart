@@ -20,3 +20,5 @@ const Color gold = Color(0xFFFFD233);
 const Color black = Color(0xFF000000);
 const Color white = Color(0xFFFFFFFF);
 const Color gray = Color(0xFFFBFBFB);
+const Color darkGreen = Color(0xFF16963A);
+const Color lightGreen = Color(0xFFD8FFE3);
