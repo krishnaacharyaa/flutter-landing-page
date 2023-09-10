@@ -12,9 +12,12 @@ const BorderRadius curvedBorderRadius = BorderRadius.only(
   bottomLeft: Radius.circular(218),
   bottomRight: Radius.circular(216),
 );
+
+// Widget Constants
 // Nav elements
 const List<String> navItems = ["Product", "Subscribe", "About"];
-
+const String logoTitle = "ImagineWorks";
+const String logoIcon = "assets/svg/logo.svg";
 // NavBar Constants
 const double logoSizeDesktop = 50;
 const double logoSizeTablet = 40;
@@ -24,7 +27,7 @@ const double logoSizeMobile = 30;
 const String heading = "Imagination Meets Intelligence";
 const String subHeading =
     "As AI as your collaborator to create anything you can imagine";
-const String heroImage = "images/hero_image.png";
+const String heroImage = "assets/images/hero_image.png";
 
 const double heroImageHeightDesktop = 500;
 const double heroImageHeightTablet = 450;
@@ -33,7 +36,7 @@ const double heroImageHeightMobile = 400;
 // Feature Constants
 final List<FeatureModel> features = [
   FeatureModel(
-      gif: "gifs/custom_ai_training.gif",
+      gif: "assets/gifs/custom_ai_training.gif",
       heading: "Custom AI Training",
       subHeading: "Create your own custom portrait generator for text to image",
       details: [
@@ -42,7 +45,7 @@ final List<FeatureModel> features = [
         "Click Create Portrait"
       ]),
   FeatureModel(
-      gif: "gifs/background_removal.gif",
+      gif: "assets/gifs/background_removal.gif",
       heading: "Background Removal",
       subHeading: "Remove background from any video",
       details: [
@@ -51,13 +54,17 @@ final List<FeatureModel> features = [
         "Click Export "
       ]),
   FeatureModel(
-      gif: "gifs/text_to_image.gif",
+      gif: "assets/gifs/text_to_image.gif",
       heading: "Text to Image",
       subHeading: "Create an image by entering descriptive text.",
       details: ["Write your prompt", "Adjust Settings ", "Click Generate"]),
   FeatureModel(
-      gif: "gifs/inpainting.gif",
+      gif: "assets/gifs/inpainting.gif",
       heading: "Inpainting",
       subHeading: "Automatically remove unwanted objects throughout your clip",
       details: ["Import your clips", "Inpaint", "Click Export"]),
 ];
+
+const double heightOfCarousel = 400;
+const double sizeOfDotDesktopTablet = 20;
+const double sizeOfDotMobile = 16;

@@ -1,6 +1,8 @@
 import 'package:app/core/util/constants.dart';
 import 'package:app/core/util/responsive/responsive_layout.dart';
 import 'package:app/onboarding/presentation/widgets/feature_section.dart';
+import 'package:app/onboarding/presentation/widgets/hero_section.dart';
+import 'package:app/onboarding/presentation/widgets/navbar_section.dart';
 import 'package:app/onboarding/presentation/widgets/side_bar.dart';
 import 'package:app/onboarding/utils/constants.dart';
 import 'package:app/onboarding/presentation/widgets/common/sized_box.dart';
@@ -21,14 +23,18 @@ class OnBoardingPage extends StatelessWidget {
           constraints: _getConstraints(context),
           child: Padding(
             padding: _getPadding(context),
-            child: ListView(
-              children: [
-                // const NavBarSection(),
-                // AppSizedBoxOfHeight(height: _getHeight(context)),
-                // const HeroSection(),
-                AppSizedBoxOfHeight(height: _getHeight(context)),
-                const FeatureSection()
-              ],
+            child: ScrollConfiguration(
+              behavior:
+                  ScrollConfiguration.of(context).copyWith(scrollbars: false),
+              child: ListView(
+                children: [
+                  const NavBarSection(),
+                  AppSizedBoxOfHeight(height: _getHeight(context)),
+                  const HeroSection(),
+                  AppSizedBoxOfHeight(height: _getHeight(context)),
+                  const FeatureSection()
+                ],
+              ),
             ),
           ),
         ),
@@ -48,7 +54,7 @@ BoxConstraints _getConstraints(BuildContext context) {
 
 EdgeInsets _getPadding(BuildContext context) {
   if (!isDesktop(context)) {
-    return const EdgeInsets.symmetric(horizontal: 16);
+    return const EdgeInsets.symmetric(horizontal: 16, vertical: 8);
   }
   return EdgeInsets.zero;
 }

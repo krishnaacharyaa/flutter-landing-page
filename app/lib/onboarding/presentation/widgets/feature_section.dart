@@ -18,7 +18,7 @@ class FeatureSection extends StatefulWidget {
 
 class _FeatureSectionState extends State<FeatureSection> {
   int _currentIndex = 0;
-  CarouselController buttonCarouselController = CarouselController();
+  CarouselController carouselController = CarouselController();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,113 +29,130 @@ class _FeatureSectionState extends State<FeatureSection> {
           alignment: Alignment.center,
           children: <Widget>[
             Column(
-              children: [
-                CarouselSlider.builder(
-                  carouselController: buttonCarouselController,
-                  itemCount: features.length,
-                  itemBuilder: (context, index, realIndex) {
-                    return !isMobile(context)
-                        ? Row(
-                            children: <Widget>[
-                              Flexible(
-                                flex: 1,
-                                child: GIFContainer(
-                                    gifContent: features[index].gif),
-                              ),
-                              AppSizedBoxOfWidth(
-                                  width: isDesktop(context) ? 96.0 : 72),
-                              Flexible(
-                                  flex: 1,
-                                  child: ContentContainer(
-                                      featureModel: features[index])),
-                            ],
-                          )
-                        : Column(
-                            children: [
-                              GIFContainer(gifContent: features[index].gif),
-                              const AppSizedBoxOfHeight(),
-                              _DotContainer(
-                                currentIndex: _currentIndex,
-                              ),
-                            ],
-                          );
-                  },
-                  options: CarouselOptions(
-                    viewportFraction: 1,
-                    height: !isMobile(context) ? 400 : 450,
-                    enlargeCenterPage: true,
-                    autoPlay: true,
-                    autoPlayInterval: const Duration(seconds: 10),
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    enableInfiniteScroll: false,
-                    initialPage: 0,
-                    disableCenter: true,
-                    onPageChanged: (index, reason) {
-                      setState(() {
-                        _currentIndex = index;
-                      });
-                    },
-                  ),
-                ),
-                isMobile(context)
-                    ? ContentContainer(featureModel: features[_currentIndex])
-                    : const SizedBox.shrink()
-              ],
+              children: [_carouselContainer(), _mobileScreenContainer()],
             ),
-            Positioned(
-              top: isMobile(context) ? 200 : null,
-              left: 0,
-              child: Visibility(
-                visible: _currentIndex != 0,
-                child: IconButton(
-                  icon: Icon(
-                    color: Colors.grey,
-                    Icons.keyboard_arrow_left_rounded,
-                    size: isDesktop(context) ? 60 : 40,
-                  ),
-                  onPressed: () {
-                    buttonCarouselController.previousPage();
-                    if (_currentIndex > 0) {
-                      setState(() {
-                        _currentIndex--;
-                      });
-                    }
-                  },
-                ),
-              ),
-            ),
-            Positioned(
-              top: isMobile(context) ? 200 : null,
-              right: 0,
-              child: Visibility(
-                visible: _currentIndex != features.length - 1,
-                child: IconButton(
-                  icon: Icon(
-                    color: Colors.grey,
-                    Icons.keyboard_arrow_right_rounded,
-                    size: isDesktop(context) ? 60 : 40,
-                  ),
-                  onPressed: () {
-                    buttonCarouselController.nextPage();
-                    if (_currentIndex < features.length - 1) {
-                      setState(() {
-                        _currentIndex++;
-                      });
-                    }
-                  },
-                ),
-              ),
-            ),
+            ..._carouselNavigators()
           ],
         ),
         AppSizedBoxOfHeight(height: !isMobile(context) ? 32 : 16),
-        !isMobile(context)
-            ? _DotContainer(
-                currentIndex: _currentIndex,
-              )
-            : const SizedBox.shrink()
+        _desktopDotIndicators(),
       ],
     );
+  }
+
+  Widget _desktopDotIndicators() {
+    return !isMobile(context)
+        ? _DotContainer(currentIndex: _currentIndex)
+        : const SizedBox.shrink();
+  }
+
+  Widget _carouselContainer() {
+    return CarouselSlider.builder(
+        carouselController: carouselController,
+        itemCount: features.length,
+        itemBuilder: (context, index, realIndex) {
+          return !isMobile(context)
+              ? Row(
+                  children: <Widget>[
+                    Flexible(
+                      flex: 1,
+                      child: GIFContainer(gifContent: features[index].gif),
+                    ),
+                    AppSizedBoxOfWidth(width: isDesktop(context) ? 96 : 72),
+                    Flexible(
+                        flex: 1,
+                        child:
+                            _ContentContainer(featureModel: features[index])),
+                  ],
+                )
+              : Column(
+                  children: [
+                    GIFContainer(gifContent: features[index].gif),
+                  ],
+                );
+        },
+        options: _carouselOptions);
+  }
+
+  Widget _mobileScreenContainer() {
+    return isMobile(context)
+        ? Column(
+            children: [
+              const AppSizedBoxOfHeight(),
+              _DotContainer(
+                currentIndex: _currentIndex,
+              ),
+              const AppSizedBoxOfHeight(),
+              _ContentContainer(featureModel: features[_currentIndex])
+            ],
+          )
+        : const SizedBox.shrink();
+  }
+
+  get _carouselOptions => CarouselOptions(
+        viewportFraction: 1,
+        height: heightOfCarousel,
+        enlargeCenterPage: true,
+        autoPlay: true,
+        autoPlayInterval: const Duration(seconds: 10),
+        autoPlayCurve: Curves.fastOutSlowIn,
+        enableInfiniteScroll: false,
+        initialPage: 0,
+        disableCenter: true,
+        onPageChanged: (index, reason) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+      );
+
+  List<Widget> _carouselNavigators() {
+    return [
+      Positioned(
+        top: isMobile(context) ? heightOfCarousel / 2 : null,
+        left: 0,
+        child: Visibility(
+          visible: _currentIndex != 0,
+          child: IconButton(
+            icon: Icon(
+              color: Colors.grey,
+              Icons.keyboard_arrow_left_rounded,
+              size: isDesktop(context) ? 60 : 40,
+            ),
+            onPressed: () {
+              carouselController.previousPage();
+              if (_currentIndex > 0) {
+                setState(() {
+                  _currentIndex--;
+                });
+              }
+            },
+          ),
+        ),
+      ),
+      Positioned(
+        top: isMobile(context) ? heightOfCarousel / 2 : null,
+        right: 0,
+        child: Visibility(
+          visible: _currentIndex != features.length - 1,
+          child: IconButton(
+            icon: Icon(
+              color: Colors.grey,
+              Icons.keyboard_arrow_right_rounded,
+              size: isDesktop(context) ? 60 : 40,
+            ),
+            onPressed: () {
+              carouselController.nextPage();
+              if (_currentIndex < features.length - 1) {
+                setState(() {
+                  _currentIndex++;
+                });
+              }
+            },
+          ),
+        ),
+      )
+    ];
   }
 }
 
@@ -156,8 +173,8 @@ class _DotContainerState extends State<_DotContainer> {
         final int index = entry.key;
         final bool isActive = widget.currentIndex == index;
         return Container(
-          width: !isMobile(context) ? 20.0 : 16,
-          height: !isMobile(context) ? 20.0 : 16,
+          width: !isMobile(context) ? sizeOfDotDesktopTablet : sizeOfDotMobile,
+          height: !isMobile(context) ? sizeOfDotDesktopTablet : sizeOfDotMobile,
           margin: const EdgeInsets.symmetric(horizontal: 16.0),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
@@ -176,15 +193,15 @@ class _DotContainerState extends State<_DotContainer> {
   }
 }
 
-class ContentContainer extends StatefulWidget {
-  FeatureModel featureModel;
-  ContentContainer({required this.featureModel, super.key});
+class _ContentContainer extends StatefulWidget {
+  final FeatureModel featureModel;
+  const _ContentContainer({required this.featureModel});
 
   @override
-  State<ContentContainer> createState() => _ContentContainerState();
+  State<_ContentContainer> createState() => _ContentContainerState();
 }
 
-class _ContentContainerState extends State<ContentContainer> {
+class _ContentContainerState extends State<_ContentContainer> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -204,7 +221,7 @@ class _ContentContainerState extends State<ContentContainer> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: widget.featureModel.details
-              .map((e) => Padding(
+              .map((feature) => Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -223,7 +240,7 @@ class _ContentContainerState extends State<ContentContainer> {
                         const AppSizedBoxOfWidth(width: 16),
                         Expanded(
                           child: ResponsiveText(
-                            text: e,
+                            text: feature,
                             textStyle: getResponsiveTextStyle(
                                 context, AppTextTheme.title),
                           ),
@@ -240,8 +257,8 @@ class _ContentContainerState extends State<ContentContainer> {
 }
 
 class GIFContainer extends StatelessWidget {
-  String gifContent;
-  GIFContainer({
+  final String gifContent;
+  const GIFContainer({
     super.key,
     required this.gifContent,
   });
@@ -253,7 +270,7 @@ class GIFContainer extends StatelessWidget {
       child: Image.asset(
         gifContent,
         fit: BoxFit.fill,
-        height: 400,
+        height: heightOfCarousel,
         width: double.infinity,
       ),
     );

@@ -20,11 +20,11 @@ class NavBarSection extends StatelessWidget {
         if (!isMobile(context)) const NavBarItems(),
         if (!isMobile(context)) const CallOutButtons(),
         if (isMobile(context))
-          IconButton(
-              onPressed: () {
+          InkWell(
+              onTap: () {
                 Scaffold.of(context).openEndDrawer();
               },
-              icon: const Icon(Icons.menu))
+              child: const Icon(Icons.menu))
       ],
     );
   }
@@ -75,11 +75,11 @@ class Logo extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         ResponsiveText(
-            text: "ImagineWorks",
+            text: logoTitle,
             textStyle: getResponsiveTextStyle(context, AppTextTheme.headline)),
         const AppSizedBoxOfWidth(),
         SvgPicture.asset(
-          'svg/logo.svg',
+          logoIcon,
           height: sizeOfLogo(context),
           width: sizeOfLogo(context),
         ),
@@ -95,6 +95,5 @@ double sizeOfLogo(context) {
   if (isTablet(context)) {
     return logoSizeTablet;
   }
-
   return logoSizeMobile;
 }
