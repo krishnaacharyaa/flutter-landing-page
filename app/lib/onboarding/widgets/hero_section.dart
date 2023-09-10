@@ -2,6 +2,7 @@ import 'package:app/core/util/entities.dart';
 import 'package:app/core/util/responsive/responsive_layout.dart';
 import 'package:app/core/util/responsive/responsive_text.dart';
 import 'package:app/core/util/responsive/responsive_text_style.dart';
+import 'package:app/onboarding/utils/constants.dart';
 import 'package:app/onboarding/widgets/common/call_out_button.dart';
 import 'package:app/onboarding/widgets/common/sized_box.dart';
 import 'package:flutter/material.dart';
@@ -16,70 +17,66 @@ class HeroSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Flexible(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ResponsiveHeaderText(
-                        text: "Imagination Meets Intelligence",
-                        textStyle: getResponsiveTextStyle(
-                            context, AppTextTheme.display)),
-                    const AppSizedBoxOfHeight(height: 32),
-                    ResponsiveText(
-                        text:
-                            "As AI as your collaborator to create anything you can imagine",
-                        textStyle: getResponsiveTextStyle(
-                            context, AppTextTheme.headline)),
-                    const AppSizedBoxOfHeight(height: 64),
-                    const AppFilledButton()
-                  ],
-                ),
+              const Flexible(child: _Content()),
+              AppSizedBoxOfWidth(
+                width: !isTablet(context) ? 96 : 72,
               ),
-              Flexible(
-                  child: Image.asset(
-                "images/hero_image.png",
-                fit: BoxFit.fill,
-                height: _getContainerHeight(context),
-              ))
+              const Flexible(child: _Image())
             ],
           )
-        : Column(
+        : const Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Image.asset(
-                "images/hero_image.png",
-                fit: BoxFit.fill,
-                width: double.infinity,
-                height: _getContainerHeight(context),
-              ),
-              const AppSizedBoxOfHeight(
+              _Image(),
+              AppSizedBoxOfHeight(
                 height: 32,
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ResponsiveHeaderText(
-                      text: "Imagination Meets Intelligence",
-                      textStyle: getResponsiveTextStyle(
-                          context, AppTextTheme.display)),
-                  const AppSizedBoxOfHeight(height: 16),
-                  ResponsiveText(
-                      text:
-                          "As AI as your collaborator to create anything you can imagine",
-                      textStyle: getResponsiveTextStyle(
-                          context, AppTextTheme.headline)),
-                  const AppSizedBoxOfHeight(height: 32),
-                  const AppFilledButton()
-                ],
-              ),
+              _Content()
             ],
           );
   }
 }
 
 _getContainerHeight(BuildContext context) {
-  if (isDesktop(context)) return 500;
-  if (isTablet(context)) return 450;
-  return 400;
+  if (isDesktop(context)) return heroImageHeightDesktop;
+  if (isTablet(context)) return heroImageHeightTablet;
+  return heroImageHeightMobile;
+}
+
+class _Image extends StatelessWidget {
+  const _Image();
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(
+      heroImage,
+      fit: BoxFit.fill,
+      width: double.infinity,
+      height: _getContainerHeight(context),
+    );
+  }
+}
+
+class _Content extends StatelessWidget {
+  const _Content();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ResponsiveHeaderText(
+            text: heading,
+            textStyle: getResponsiveTextStyle(context, AppTextTheme.display)),
+        AppSizedBoxOfHeight(height: !isMobile(context) ? 32 : 16),
+        ResponsiveText(
+            text: subHeading,
+            textStyle: getResponsiveTextStyle(context, AppTextTheme.headline)),
+        AppSizedBoxOfHeight(height: !isMobile(context) ? 64 : 32),
+        const AppFilledButton()
+      ],
+    );
+  }
 }
