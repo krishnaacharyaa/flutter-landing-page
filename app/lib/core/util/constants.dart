@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 
-class AppConstants {
-  // responsive width constants
-  static const int minMobileScreenWidth = 340;
-  static const int maxMobileScreenWidth = 904;
+// responsive width constants
+const double minMobileScreenWidth = 340;
+const double maxMobileScreenWidth = 904;
 
-  static const int minTabletScreenWidth = 905;
-  static const int maxTabletScreenWidth = 1239;
+const double minTabletScreenWidth = 905;
+const double maxTabletScreenWidth = 1239;
 
-  static const int minDesktopScreenWidth = 1240;
-  static const int maxDesktopScreenWidth = 1440;
+const double minDesktopScreenWidth = 1240;
+const double maxDesktopScreenWidth = 1440;
 
-  // colors
-  static const Color gold = Color(0xFFFFD233);
-  static const Color black = Color(0xFF000000);
-  static const Color white = Color(0xFFFFFFFF);
-  static const Color gray = Color(0xFFFBFBFB);
-}
+// These are maxwidth of layouts from design system
+const double desktopContainerWidth = 1128;
+const double tabletContainerWidth = 1174;
+const double mobileContainerWidth = 872;
+
+// colors
+const Color gold = Color(0xFFFFD233);
+const Color black = Color(0xFF000000);
+const Color white = Color(0xFFFFFFFF);
+const Color gray = Color(0xFFFBFBFB);

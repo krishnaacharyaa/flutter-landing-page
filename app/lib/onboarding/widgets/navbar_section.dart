@@ -89,12 +89,12 @@ class Logo extends StatelessWidget {
 }
 
 double sizeOfLogo(context) {
-  switch (getAppSize(context)) {
-    case AppSize.desktop:
-      return logoSizeDesktop;
-    case AppSize.tablet:
-      return logoSizeTablet;
-    default:
-      return logoSizeMobile;
+  if (isDesktop(context)) {
+    return logoSizeDesktop;
   }
+  if (isTablet(context)) {
+    return logoSizeTablet;
+  }
+
+  return logoSizeMobile;
 }

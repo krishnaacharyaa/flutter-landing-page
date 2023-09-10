@@ -33,7 +33,7 @@ class CustomTheme {
                 TextStyle(fontSize: 11, letterSpacing: 0.50, height: 16 / 11),
           ),
         ),
-        colorScheme: const ColorScheme.light(primary: AppConstants.gold),
+        colorScheme: const ColorScheme.light(primary: gold),
         // primaryColor: AppConstants.gold,
         useMaterial3: true);
   }

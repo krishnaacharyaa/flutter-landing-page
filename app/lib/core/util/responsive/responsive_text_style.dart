@@ -4,28 +4,17 @@ import 'package:flutter/material.dart';
 
 TextStyle getResponsiveTextStyle(
     BuildContext context, AppTextTheme appTextTheme) {
-  final AppSize appSize = getAppSize(context);
-
-  return _getTextStyle(context, appTextTheme, appSize);
+  return _getTextStyle(context, appTextTheme) ?? const TextStyle();
 }
 
-TextStyle _getTextStyle(
-    BuildContext context, AppTextTheme appTextTheme, AppSize appSize) {
-  TextStyle? textStyle;
-
-  switch (appSize) {
-    case AppSize.desktop:
-      textStyle = _getTextStyleForDesktop(context, appTextTheme);
-      break;
-    case AppSize.tablet:
-      textStyle = _getTextStyleForTablet(context, appTextTheme);
-      break;
-    case AppSize.mobile:
-      textStyle = _getTextStyleForMobile(context, appTextTheme);
-      break;
+TextStyle? _getTextStyle(BuildContext context, AppTextTheme appTextTheme) {
+  if (isDesktop(context)) {
+    return _getTextStyleForDesktop(context, appTextTheme);
   }
-
-  return textStyle ?? const TextStyle();
+  if (isTablet(context)) {
+    return _getTextStyleForTablet(context, appTextTheme);
+  }
+  return _getTextStyleForMobile(context, appTextTheme);
 }
 
 TextStyle? _getTextStyleForDesktop(
