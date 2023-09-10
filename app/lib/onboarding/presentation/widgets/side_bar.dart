@@ -1,6 +1,5 @@
 import 'package:app/onboarding/utils/constants.dart';
 import 'package:app/onboarding/presentation/widgets/common/call_out_button.dart';
-import 'package:app/onboarding/presentation/widgets/common/sized_box.dart';
 import 'package:flutter/material.dart';
 
 class SideBar extends StatelessWidget {
@@ -30,7 +29,7 @@ class CallOutButtons extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         SizedBox(width: double.infinity, child: AppOutlineButton()),
-        AppSizedBoxOfHeight(),
+        SizedBox(height: 16),
         SizedBox(width: double.infinity, child: AppFilledButton())
       ],
     );

@@ -5,7 +5,6 @@ import 'package:app/onboarding/presentation/widgets/hero_section.dart';
 import 'package:app/onboarding/presentation/widgets/navbar_section.dart';
 import 'package:app/onboarding/presentation/widgets/side_bar.dart';
 import 'package:app/onboarding/utils/constants.dart';
-import 'package:app/onboarding/presentation/widgets/common/sized_box.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingPage extends StatelessWidget {
@@ -29,9 +28,9 @@ class OnBoardingPage extends StatelessWidget {
               child: ListView(
                 children: [
                   const NavBarSection(),
-                  AppSizedBoxOfHeight(height: _getHeight(context)),
+                  SizedBox(height: _getHeight(context)),
                   const HeroSection(),
-                  AppSizedBoxOfHeight(height: _getHeight(context)),
+                  SizedBox(height: _getHeight(context)),
                   const FeatureSection()
                 ],
               ),

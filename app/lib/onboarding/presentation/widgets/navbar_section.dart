@@ -3,7 +3,6 @@ import 'package:app/core/util/responsive/responsive_text.dart';
 import 'package:app/core/util/responsive/responsive_text_style.dart';
 import 'package:app/onboarding/utils/constants.dart';
 import 'package:app/onboarding/presentation/widgets/common/call_out_button.dart';
-import 'package:app/onboarding/presentation/widgets/common/sized_box.dart';
 import 'package:app/core/util/responsive/responsive_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -36,7 +35,7 @@ class CallOutButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Row(
-      children: [AppOutlineButton(), AppSizedBoxOfWidth(), AppFilledButton()],
+      children: [AppOutlineButton(), SizedBox(width: 16), AppFilledButton()],
     );
   }
 }
@@ -57,7 +56,7 @@ class NavBarItems extends StatelessWidget {
                     textStyle:
                         getResponsiveTextStyle(context, AppTextTheme.title),
                   ),
-                  const AppSizedBoxOfWidth()
+                  const SizedBox(width: 16)
                 ],
               ),
             )
@@ -77,7 +76,7 @@ class Logo extends StatelessWidget {
         ResponsiveText(
             text: logoTitle,
             textStyle: getResponsiveTextStyle(context, AppTextTheme.headline)),
-        const AppSizedBoxOfWidth(),
+        const SizedBox(width: 16),
         SvgPicture.asset(
           logoIcon,
           height: sizeOfLogo(context),
@@ -88,7 +87,7 @@ class Logo extends StatelessWidget {
   }
 }
 
-double sizeOfLogo(context) {
+double sizeOfLogo(BuildContext context) {
   if (isDesktop(context)) {
     return logoSizeDesktop;
   }

@@ -1,13 +1,12 @@
+import 'package:app/core/util/responsive/responsive_text.dart';
+import 'package:app/core/util/responsive/responsive_text_style.dart';
+import 'package:app/onboarding/utils/constants.dart';
+import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:app/core/util/constants.dart';
 import 'package:app/core/util/entities.dart';
 import 'package:app/core/util/responsive/responsive_layout.dart';
-import 'package:app/core/util/responsive/responsive_text.dart';
-import 'package:app/core/util/responsive/responsive_text_style.dart';
 import 'package:app/onboarding/domain/model.dart';
-import 'package:app/onboarding/utils/constants.dart';
-import 'package:app/onboarding/presentation/widgets/common/sized_box.dart';
-import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 
 class FeatureSection extends StatefulWidget {
   const FeatureSection({Key? key}) : super(key: key);
@@ -18,7 +17,8 @@ class FeatureSection extends StatefulWidget {
 
 class _FeatureSectionState extends State<FeatureSection> {
   int _currentIndex = 0;
-  CarouselController carouselController = CarouselController();
+  final CarouselController _carouselController = CarouselController();
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,67 +29,49 @@ class _FeatureSectionState extends State<FeatureSection> {
           alignment: Alignment.center,
           children: <Widget>[
             Column(
-              children: [_carouselContainer(), _mobileScreenContainer()],
+              children: [_buildCarousel(), _buildMobileScreen()],
             ),
-            ..._carouselNavigators()
+            ..._buildCarouselNavigators()
           ],
         ),
-        AppSizedBoxOfHeight(height: !isMobile(context) ? 32 : 16),
-        _desktopDotIndicators(),
+        const SizedBox(height: 16),
+        _buildDesktopDotIndicators(),
       ],
     );
   }
 
-  Widget _desktopDotIndicators() {
+  Widget _buildDesktopDotIndicators() {
     return !isMobile(context)
         ? _DotContainer(currentIndex: _currentIndex)
         : const SizedBox.shrink();
   }
 
-  Widget _carouselContainer() {
+  Widget _buildCarousel() {
     return CarouselSlider.builder(
-        carouselController: carouselController,
-        itemCount: features.length,
-        itemBuilder: (context, index, realIndex) {
-          return !isMobile(context)
-              ? Row(
-                  children: <Widget>[
-                    Flexible(
-                      flex: 1,
-                      child: GIFContainer(gifContent: features[index].gif),
-                    ),
-                    AppSizedBoxOfWidth(width: isDesktop(context) ? 96 : 72),
-                    Flexible(
-                        flex: 1,
-                        child:
-                            _ContentContainer(featureModel: features[index])),
-                  ],
-                )
-              : Column(
-                  children: [
-                    GIFContainer(gifContent: features[index].gif),
-                  ],
-                );
-        },
-        options: _carouselOptions);
-  }
-
-  Widget _mobileScreenContainer() {
-    return isMobile(context)
-        ? Column(
-            children: [
-              const AppSizedBoxOfHeight(),
-              _DotContainer(
-                currentIndex: _currentIndex,
-              ),
-              const AppSizedBoxOfHeight(),
-              _ContentContainer(featureModel: features[_currentIndex])
-            ],
-          )
-        : const SizedBox.shrink();
-  }
-
-  get _carouselOptions => CarouselOptions(
+      carouselController: _carouselController,
+      itemCount: features.length,
+      itemBuilder: (context, index, realIndex) {
+        return !isMobile(context)
+            ? Row(
+                children: <Widget>[
+                  Flexible(
+                    flex: 1,
+                    child: GIFContainer(gifContent: features[index].gif),
+                  ),
+                  SizedBox(width: isDesktop(context) ? 96 : 72),
+                  Flexible(
+                    flex: 1,
+                    child: _ContentContainer(featureModel: features[index]),
+                  ),
+                ],
+              )
+            : Column(
+                children: [
+                  GIFContainer(gifContent: features[index].gif),
+                ],
+              );
+      },
+      options: CarouselOptions(
         viewportFraction: 1,
         height: heightOfCarousel,
         enlargeCenterPage: true,
@@ -104,9 +86,24 @@ class _FeatureSectionState extends State<FeatureSection> {
             _currentIndex = index;
           });
         },
-      );
+      ),
+    );
+  }
 
-  List<Widget> _carouselNavigators() {
+  Widget _buildMobileScreen() {
+    return isMobile(context)
+        ? Column(
+            children: [
+              const SizedBox(height: 16),
+              _DotContainer(currentIndex: _currentIndex),
+              const SizedBox(height: 16),
+              _ContentContainer(featureModel: features[_currentIndex])
+            ],
+          )
+        : const SizedBox.shrink();
+  }
+
+  List<Widget> _buildCarouselNavigators() {
     return [
       Positioned(
         top: isMobile(context) ? heightOfCarousel / 2 : null,
@@ -120,7 +117,7 @@ class _FeatureSectionState extends State<FeatureSection> {
               size: isDesktop(context) ? 60 : 40,
             ),
             onPressed: () {
-              carouselController.previousPage();
+              _carouselController.previousPage();
               if (_currentIndex > 0) {
                 setState(() {
                   _currentIndex--;
@@ -142,7 +139,7 @@ class _FeatureSectionState extends State<FeatureSection> {
               size: isDesktop(context) ? 60 : 40,
             ),
             onPressed: () {
-              carouselController.nextPage();
+              _carouselController.nextPage();
               if (_currentIndex < features.length - 1) {
                 setState(() {
                   _currentIndex++;
@@ -156,22 +153,17 @@ class _FeatureSectionState extends State<FeatureSection> {
   }
 }
 
-class _DotContainer extends StatefulWidget {
+class _DotContainer extends StatelessWidget {
   final int currentIndex;
   const _DotContainer({required this.currentIndex});
 
-  @override
-  State<_DotContainer> createState() => _DotContainerState();
-}
-
-class _DotContainerState extends State<_DotContainer> {
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: features.asMap().entries.map((entry) {
         final int index = entry.key;
-        final bool isActive = widget.currentIndex == index;
+        final bool isActive = currentIndex == index;
         return Container(
           width: !isMobile(context) ? sizeOfDotDesktopTablet : sizeOfDotMobile,
           height: !isMobile(context) ? sizeOfDotDesktopTablet : sizeOfDotMobile,
@@ -193,15 +185,10 @@ class _DotContainerState extends State<_DotContainer> {
   }
 }
 
-class _ContentContainer extends StatefulWidget {
+class _ContentContainer extends StatelessWidget {
   final FeatureModel featureModel;
   const _ContentContainer({required this.featureModel});
 
-  @override
-  State<_ContentContainer> createState() => _ContentContainerState();
-}
-
-class _ContentContainerState extends State<_ContentContainer> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -210,47 +197,48 @@ class _ContentContainerState extends State<_ContentContainer> {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         ResponsiveText(
-            text: widget.featureModel.heading,
-            textStyle: getResponsiveTextStyle(context, AppTextTheme.headline)),
-        const AppSizedBoxOfHeight(height: 16),
+          text: featureModel.heading,
+          textStyle: getResponsiveTextStyle(context, AppTextTheme.headline),
+        ),
+        const SizedBox(height: 16),
         ResponsiveText(
-            text: widget.featureModel.subHeading,
-            textStyle: getResponsiveTextStyle(context, AppTextTheme.title)),
-
-        const AppSizedBoxOfHeight(height: 32),
+          text: featureModel.subHeading,
+          textStyle: getResponsiveTextStyle(context, AppTextTheme.title),
+        ),
+        const SizedBox(height: 32),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: widget.featureModel.details
-              .map((feature) => Padding(
-                    padding: const EdgeInsets.only(bottom: 16.0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(!isMobile(context) ? 4 : 2),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: lightGreen),
-                          child: Icon(
-                            Icons.done,
-                            size: !isMobile(context) ? 24 : 16,
-                            color: darkGreen,
-                          ),
-                        ),
-                        const AppSizedBoxOfWidth(width: 16),
-                        Expanded(
-                          child: ResponsiveText(
-                            text: feature,
-                            textStyle: getResponsiveTextStyle(
-                                context, AppTextTheme.title),
-                          ),
-                        ),
-                      ],
+          children: featureModel.details.map((feature) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 16.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(!isMobile(context) ? 4 : 2),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: lightGreen,
                     ),
-                  ))
-              .toList(),
-        )
-        // Add more content here as needed
+                    child: Icon(
+                      Icons.done,
+                      size: !isMobile(context) ? 24 : 16,
+                      color: darkGreen,
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: ResponsiveText(
+                      text: feature,
+                      textStyle:
+                          getResponsiveTextStyle(context, AppTextTheme.title),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }).toList(),
+        ),
       ],
     );
   }

@@ -4,7 +4,6 @@ import 'package:app/core/util/responsive/responsive_text.dart';
 import 'package:app/core/util/responsive/responsive_text_style.dart';
 import 'package:app/onboarding/utils/constants.dart';
 import 'package:app/onboarding/presentation/widgets/common/call_out_button.dart';
-import 'package:app/onboarding/presentation/widgets/common/sized_box.dart';
 import 'package:flutter/material.dart';
 
 class HeroSection extends StatelessWidget {
@@ -18,7 +17,7 @@ class HeroSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Flexible(child: _Content()),
-              AppSizedBoxOfWidth(
+              SizedBox(
                 width: !isTablet(context) ? 96 : 72,
               ),
               const Flexible(child: _Image())
@@ -27,13 +26,7 @@ class HeroSection extends StatelessWidget {
         : const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              _Image(),
-              AppSizedBoxOfHeight(
-                height: 32,
-              ),
-              _Content()
-            ],
+            children: [_Image(), SizedBox(height: 32), _Content()],
           );
   }
 }
@@ -70,11 +63,11 @@ class _Content extends StatelessWidget {
         ResponsiveHeaderText(
             text: heading,
             textStyle: getResponsiveTextStyle(context, AppTextTheme.display)),
-        AppSizedBoxOfHeight(height: !isMobile(context) ? 32 : 16),
+        SizedBox(height: !isMobile(context) ? 32 : 16),
         ResponsiveText(
             text: subHeading,
             textStyle: getResponsiveTextStyle(context, AppTextTheme.headline)),
-        AppSizedBoxOfHeight(height: !isMobile(context) ? 64 : 32),
+        SizedBox(height: !isMobile(context) ? 64 : 32),
         const AppFilledButton()
       ],
     );
