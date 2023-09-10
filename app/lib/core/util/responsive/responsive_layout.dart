@@ -1,5 +1,4 @@
 import 'package:app/core/util/constants.dart';
-import 'package:app/core/util/entities.dart';
 import 'package:flutter/material.dart';
 
 bool isMobile(BuildContext context) =>

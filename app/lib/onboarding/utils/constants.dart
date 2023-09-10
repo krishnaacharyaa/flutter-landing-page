@@ -1,3 +1,9 @@
+// Pages constants
+// OnBoarding
+const double heightBetweenElementsDesktop = 56;
+const double heightBetweenElementsTablet = 48;
+const double heightBetweenElementsMobile = 32;
+
 // Nav elements
 const List<String> navItems = ["Product", "Subscribe", "About"];
 

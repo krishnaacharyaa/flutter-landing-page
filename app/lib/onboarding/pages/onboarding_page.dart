@@ -1,10 +1,10 @@
 import 'package:app/core/util/constants.dart';
-import 'package:app/core/util/entities.dart';
 import 'package:app/core/util/responsive/responsive_layout.dart';
+import 'package:app/onboarding/utils/constants.dart';
 import 'package:app/onboarding/widgets/common/sized_box.dart';
 import 'package:app/onboarding/widgets/hero_section.dart';
 import 'package:app/onboarding/widgets/navbar_section.dart';
-import 'package:app/onboarding/widgets/sidebar.dart';
+import 'package:app/onboarding/widgets/side_bar.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingPage extends StatelessWidget {
@@ -54,10 +54,10 @@ EdgeInsets _getPadding(BuildContext context) {
 
 double _getHeight(BuildContext context) {
   if (isDesktop(context)) {
-    return 56;
+    return heightBetweenElementsDesktop;
   }
   if (isTablet(context)) {
-    return 48;
+    return heightBetweenElementsTablet;
   }
-  return 32;
+  return heightBetweenElementsMobile;
 }
