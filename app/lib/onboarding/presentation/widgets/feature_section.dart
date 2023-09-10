@@ -6,7 +6,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:app/core/util/constants.dart';
 import 'package:app/core/util/entities.dart';
 import 'package:app/core/util/responsive/responsive_layout.dart';
-import 'package:app/onboarding/domain/model.dart';
+import 'package:app/onboarding/domain/model/feature_model.dart';
 
 class FeatureSection extends StatefulWidget {
   const FeatureSection({Key? key}) : super(key: key);

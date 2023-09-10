@@ -3,7 +3,11 @@ import 'package:app/core/util/responsive/responsive_text_style.dart';
 import 'package:flutter/material.dart';
 
 class AppOutlineButton extends StatelessWidget {
-  const AppOutlineButton({super.key});
+  final String? text;
+  const AppOutlineButton({
+    super.key,
+    this.text,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +20,7 @@ class AppOutlineButton extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Text(
-            "Login",
+            text ?? "Login",
             style: getResponsiveTextStyle(context, AppTextTheme.title),
           ),
         ));

@@ -1,4 +1,5 @@
-import 'package:app/onboarding/domain/model.dart';
+import 'package:app/onboarding/domain/model/award_model.dart';
+import 'package:app/onboarding/domain/model/feature_model.dart';
 import 'package:flutter/material.dart';
 // Pages constants
 // OnBoarding
@@ -68,3 +69,11 @@ final List<FeatureModel> features = [
 const double heightOfCarousel = 400;
 const double sizeOfDotDesktopTablet = 20;
 const double sizeOfDotMobile = 16;
+
+final List<AwardModel> awards = [
+  AwardModel(imageUrl: 'images/award_1.png', title: "Stage 1 & 2 Winners"),
+  AwardModel(
+      imageUrl: "images/award_2.png", title: "Second place in 3/4 events"),
+  AwardModel(
+      imageUrl: "images/award_3.png", title: "Finalist in the virtual circuit")
+];

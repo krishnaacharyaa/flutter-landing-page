@@ -1,5 +1,6 @@
 import 'package:app/core/util/constants.dart';
 import 'package:app/core/util/responsive/responsive_layout.dart';
+import 'package:app/onboarding/presentation/widgets/award_section.dart';
 import 'package:app/onboarding/presentation/widgets/feature_section.dart';
 import 'package:app/onboarding/presentation/widgets/hero_section.dart';
 import 'package:app/onboarding/presentation/widgets/navbar_section.dart';
@@ -27,11 +28,12 @@ class OnBoardingPage extends StatelessWidget {
                   ScrollConfiguration.of(context).copyWith(scrollbars: false),
               child: ListView(
                 children: [
-                  const NavBarSection(),
-                  SizedBox(height: _getHeight(context)),
-                  const HeroSection(),
-                  SizedBox(height: _getHeight(context)),
-                  const FeatureSection()
+                  // const NavBarSection(),
+                  // SizedBox(height: _getHeight(context)),
+                  // const HeroSection(),
+                  // SizedBox(height: _getHeight(context)),
+                  // const FeatureSection(),
+                  SizedBox(height: _getHeight(context)), const AwardsSection()
                 ],
               ),
             ),
