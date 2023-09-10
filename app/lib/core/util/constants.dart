@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 // responsive width constants
-const double minMobileScreenWidth = 340;
-const double maxMobileScreenWidth = 904;
+const double minMobileScreenWidth = 306;
+const double maxMobileScreenWidth = 799;
 
-const double minTabletScreenWidth = 905;
+const double minTabletScreenWidth = 800;
 const double maxTabletScreenWidth = 1239;
 
 const double minDesktopScreenWidth = 1240;
