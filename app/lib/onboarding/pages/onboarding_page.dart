@@ -8,6 +8,7 @@ class OnBoardingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Column(
+        mainAxisSize: MainAxisSize.max,
         children: [HeroSection()],
       ),
     );
