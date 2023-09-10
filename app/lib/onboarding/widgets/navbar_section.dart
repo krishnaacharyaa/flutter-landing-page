@@ -20,7 +20,7 @@ class NavBarSection extends StatelessWidget {
         if (Responsive.isMobile(context))
           IconButton(
               onPressed: () {
-                Scaffold.of(context).openDrawer();
+                Scaffold.of(context).openEndDrawer();
               },
               icon: const Icon(Icons.menu))
       ],
