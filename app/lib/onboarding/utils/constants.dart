@@ -1,4 +1,5 @@
 import 'package:app/onboarding/domain/model.dart';
+import 'package:flutter/material.dart';
 // Pages constants
 // OnBoarding
 
@@ -6,6 +7,11 @@ const double heightBetweenElementsDesktop = 56;
 const double heightBetweenElementsTablet = 48;
 const double heightBetweenElementsMobile = 32;
 
+const BorderRadius curvedBorderRadius = BorderRadius.only(
+  topLeft: Radius.circular(213),
+  bottomLeft: Radius.circular(218),
+  bottomRight: Radius.circular(216),
+);
 // Nav elements
 const List<String> navItems = ["Product", "Subscribe", "About"];
 
