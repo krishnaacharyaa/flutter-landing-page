@@ -1,6 +1,6 @@
-import 'package:app/core/util/responsive/responsive_layout.dart';
-import 'package:app/onboarding/presentation/widgets/common/section_header.dart';
-import 'package:app/onboarding/utils/constants.dart';
+import '../../../core/util/responsive/responsive_layout.dart';
+import './common/section_header.dart';
+import '../../utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:scroll_loop_auto_scroll/scroll_loop_auto_scroll.dart';
 

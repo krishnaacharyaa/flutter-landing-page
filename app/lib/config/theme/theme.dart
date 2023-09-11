@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class CustomTheme {
   static getTheme() {
     return ThemeData(
-        fontFamily: 'Inter',
+        fontFamily: fontFamily,
         textTheme: const TextTheme(
           displayLarge:
               TextStyle(fontSize: 57, letterSpacing: 0.25, height: 64 / 57),
@@ -32,7 +32,6 @@ class CustomTheme {
               TextStyle(fontSize: 11, letterSpacing: 0.50, height: 16 / 11),
         ),
         colorScheme: const ColorScheme.light(primary: gold),
-        // primaryColor: AppConstants.gold,
         useMaterial3: true);
   }
 }

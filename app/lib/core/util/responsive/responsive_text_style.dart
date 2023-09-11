@@ -1,5 +1,5 @@
 import 'package:app/core/util/entities.dart';
-import 'package:app/core/util/responsive/responsive_layout.dart';
+import '../../../core/util/responsive/responsive_layout.dart';
 import 'package:flutter/material.dart';
 
 TextStyle getResponsiveTextStyle(

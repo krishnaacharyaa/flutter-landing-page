@@ -1,9 +1,9 @@
-import 'package:app/core/util/entities.dart';
-import 'package:app/core/util/responsive/responsive_layout.dart';
-import 'package:app/core/util/responsive/responsive_text.dart';
-import 'package:app/core/util/responsive/responsive_text_style.dart';
-import 'package:app/onboarding/presentation/widgets/common/call_out_button.dart';
-import 'package:app/onboarding/utils/constants.dart';
+import '../../../core/util/entities.dart';
+import '../../../core/util/responsive/responsive_layout.dart';
+import '../../../core/util/responsive/responsive_text.dart';
+import '../../../core/util/responsive/responsive_text_style.dart';
+import './common/call_out_button.dart';
+import '../../utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

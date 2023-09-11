@@ -1,11 +1,11 @@
 import 'package:app/core/util/entities.dart';
-import 'package:app/core/util/responsive/responsive_layout.dart';
-import 'package:app/core/util/responsive/responsive_text.dart';
-import 'package:app/core/util/responsive/responsive_text_style.dart';
-import 'package:app/onboarding/domain/model/award_model.dart';
-import 'package:app/onboarding/presentation/widgets/common/call_out_button.dart';
-import 'package:app/onboarding/presentation/widgets/common/section_header.dart';
-import 'package:app/onboarding/utils/constants.dart';
+import '../../../core/util/responsive/responsive_layout.dart';
+import '../../../core/util/responsive/responsive_text.dart';
+import '../../../core/util/responsive/responsive_text_style.dart';
+import '../../domain/model/award_model.dart';
+import './common/call_out_button.dart';
+import './common/section_header.dart';
+import '../../utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class AwardsSection extends StatelessWidget {

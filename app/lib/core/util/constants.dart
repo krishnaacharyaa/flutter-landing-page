@@ -13,7 +13,6 @@ const double maxDesktopScreenWidth = 1440;
 // These are maxwidth of layouts from design system
 const double desktopContainerWidth = 1128;
 const double tabletContainerWidth = 1174;
-const double mobileContainerWidth = 872;
 
 // colors
 const Color gold = Color(0xFFFFD233);
@@ -22,3 +21,6 @@ const Color white = Color(0xFFFFFFFF);
 const Color gray = Color(0xFFFBFBFB);
 const Color darkGreen = Color(0xFF16963A);
 const Color lightGreen = Color(0xFFD8FFE3);
+
+// theme
+const String fontFamily = 'Inter';

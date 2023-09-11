@@ -42,10 +42,10 @@ class ResponsiveHeaderText extends StatelessWidget {
           TextSpan(
             text: leadingText,
             style: textStyle.copyWith(
-              color: gold, // Change this to your desired gold color
+              color: gold,
             ),
           ),
-          const TextSpan(text: " "), // Add a space between the two parts
+          const TextSpan(text: " "),
           TextSpan(text: trailingText, style: textStyle),
         ],
       ),

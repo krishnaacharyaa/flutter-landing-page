@@ -1,6 +1,7 @@
-import 'package:app/core/util/entities.dart';
-import 'package:app/core/util/responsive/responsive_text_style.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../core/util/entities.dart';
+import '../../../../core/util/responsive/responsive_text_style.dart';
 
 class AppOutlineButton extends StatelessWidget {
   final String? text;

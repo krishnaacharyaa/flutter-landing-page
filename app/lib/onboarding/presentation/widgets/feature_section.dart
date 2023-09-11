@@ -1,12 +1,12 @@
-import 'package:app/core/util/responsive/responsive_text.dart';
-import 'package:app/core/util/responsive/responsive_text_style.dart';
-import 'package:app/onboarding/utils/constants.dart';
+import '../../../core/util/constants.dart';
+import '../../../core/util/entities.dart';
+import '../../../core/util/responsive/responsive_text.dart';
+import '../../../core/util/responsive/responsive_text_style.dart';
+import '../../domain/model/feature_model.dart';
+import '../../utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:app/core/util/constants.dart';
-import 'package:app/core/util/entities.dart';
-import 'package:app/core/util/responsive/responsive_layout.dart';
-import 'package:app/onboarding/domain/model/feature_model.dart';
+import '../../../core/util/responsive/responsive_layout.dart';
 
 class FeatureSection extends StatefulWidget {
   final GlobalKey featureKey;
