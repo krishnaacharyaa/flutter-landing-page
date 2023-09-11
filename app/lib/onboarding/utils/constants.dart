@@ -79,3 +79,22 @@ final List<AwardModel> awards = [
       imageUrl: "images/award_3.png", title: "Finalist in the virtual circuit")
 ];
 const String learnMore = "Learn More";
+
+// Footer Constants
+
+const footerTitle = "\u00a9 2023 AAUNO Inc. All rights reserved.";
+const List<String> footerItems = [
+  "Terms of Service",
+  "Privacy Policy",
+  "Code of Conduct"
+];
+
+const List<String> footerlogos = [
+  "svg/reddit.svg",
+  "svg/linkedIn.svg",
+  "svg/facebook.svg",
+  "svg/youtube.svg",
+  "svg/twitter.svg",
+  "svg/instagram.svg",
+  "svg/tiktok.svg"
+];
