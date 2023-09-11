@@ -69,6 +69,7 @@ final List<FeatureModel> features = [
 const double heightOfCarousel = 400;
 const double sizeOfDotDesktopTablet = 20;
 const double sizeOfDotMobile = 16;
+const int timeToWaitForEachCarousel = 10;
 
 // Awards Constants
 final List<AwardModel> awards = [
@@ -120,4 +121,8 @@ const int noOfLogosDesktop = 10;
 const int noOfLogosTablet = 8;
 const int noOfLogosMobile = 6;
 
-const double heightOfLogo = 400;
+const double heightOfLogo = 80;
+
+//About Us Constants
+const aboutUsString =
+    "AAUNO is an independent research lab focused in the field of Artificial Intelligence, Blockchain and Autonomous Systems, exploring efficient and cost effective ways in solving problems in these domain.\n\nWe believe everyone is unique and has a story. Our mission is to make technology accessible to all.\n\nWe are a small self-funded, fully-distributed passionate team who are domain experts in there field working with decades of experience and an incredible set of open minded advisors.";

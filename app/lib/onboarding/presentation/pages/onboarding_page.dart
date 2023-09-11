@@ -1,5 +1,6 @@
 import 'package:app/core/util/constants.dart';
 import 'package:app/core/util/responsive/responsive_layout.dart';
+import 'package:app/onboarding/presentation/widgets/about_section.dart';
 import 'package:app/onboarding/presentation/widgets/award_section.dart';
 import 'package:app/onboarding/presentation/widgets/community_section.dart';
 import 'package:app/onboarding/presentation/widgets/feature_section.dart';
@@ -41,6 +42,8 @@ class OnBoardingPage extends StatelessWidget {
                   SizedBox(height: _getHeight(context)),
                   const CommunitySection(),
                   const SizedBox(height: 32),
+                  const AboutSection(),
+                  SizedBox(height: _getHeight(context)),
                   const AwardsSection(),
                   SizedBox(height: _getHeight(context)),
                   const FooterSection(),
@@ -67,7 +70,7 @@ EdgeInsets _getPadding(BuildContext context) {
   if (!isDesktop(context)) {
     return const EdgeInsets.symmetric(horizontal: 16, vertical: 8);
   }
-  return EdgeInsets.zero;
+  return const EdgeInsets.only(bottom: 16);
 }
 
 double _getHeight(BuildContext context) {

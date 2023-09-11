@@ -76,7 +76,7 @@ class _FeatureSectionState extends State<FeatureSection> {
         height: heightOfCarousel,
         enlargeCenterPage: true,
         autoPlay: true,
-        autoPlayInterval: const Duration(seconds: 10),
+        autoPlayInterval: Duration(seconds: timeToWaitForEachCarousel),
         autoPlayCurve: Curves.fastOutSlowIn,
         enableInfiniteScroll: false,
         initialPage: 0,
