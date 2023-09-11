@@ -73,18 +73,21 @@ const int timeToWaitForEachCarousel = 10;
 
 // Awards Constants
 final List<AwardModel> awards = [
-  AwardModel(imageUrl: 'images/award_1.png', title: "Stage 1 & 2 Winners"),
   AwardModel(
-      imageUrl: "images/award_2.png", title: "Second place in 3/4 events"),
+      imageUrl: 'assets/images/award_1.png', title: "Stage 1 & 2 Winners"),
   AwardModel(
-      imageUrl: "images/award_3.png", title: "Finalist in the virtual circuit")
+      imageUrl: "assets/images/award_2.png",
+      title: "Second place in 3/4 events"),
+  AwardModel(
+      imageUrl: "assets/images/award_3.png",
+      title: "Finalist in the virtual circuit")
 ];
 const String learnMore = "Learn More";
 
 // SubFeature Constants
 const String subFeatureHeading = "Create Personal Image";
-const String subFeatureGIF1 = "gifs/subfeature_1.gif";
-const String subFeatureGIF2 = "gifs/subfeature_2.gif";
+const String subFeatureGIF1 = "assets/gifs/subfeature_1.gif";
+const String subFeatureGIF2 = "assets/gifs/subfeature_2.gif";
 const double heightOfGIF = 400;
 
 // Footer Constants
@@ -95,31 +98,31 @@ const List<String> footerItems = [
   "Code of Conduct"
 ];
 const List<String> footerlogos = [
-  "svg/reddit.svg",
-  "svg/linkedIn.svg",
-  "svg/facebook.svg",
-  "svg/youtube.svg",
-  "svg/twitter.svg",
-  "svg/instagram.svg",
-  "svg/tiktok.svg"
+  "assets/svg/reddit.svg",
+  "assets/svg/linkedIn.svg",
+  "assets/svg/facebook.svg",
+  "assets/svg/youtube.svg",
+  "assets/svg/twitter.svg",
+  "assets/svg/instagram.svg",
+  "assets/svg/tiktok.svg"
 ];
 
 // Community Constants
 final List<String> communityLogos = [
-  'images/cbs.png', // Replace with your png paths
-  'images/corridor.png',
-  'images/google.png',
-  'images/microsoft.png',
-  'images/nb.png',
-  'images/nick.png',
-  'images/ny.png',
-  'images/rga.png',
-  'images/vox.png'
+  'assets/images/cbs.png', // Replace with your png paths
+  'assets/images/corridor.png',
+  'assets/images/google.png',
+  'assets/images/microsoft.png',
+  'assets/images/nb.png',
+  'assets/images/nick.png',
+  'assets/images/ny.png',
+  'assets/images/rga.png',
+  'assets/images/vox.png'
 ];
 
-const int noOfLogosDesktop = 10;
-const int noOfLogosTablet = 8;
-const int noOfLogosMobile = 6;
+const int noOfLogosDesktop = 8;
+const int noOfLogosTablet = 6;
+const int noOfLogosMobile = 4;
 
 const double heightOfLogo = 80;
 
