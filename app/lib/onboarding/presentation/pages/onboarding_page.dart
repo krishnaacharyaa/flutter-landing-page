@@ -28,12 +28,13 @@ class OnBoardingPage extends StatelessWidget {
                   ScrollConfiguration.of(context).copyWith(scrollbars: false),
               child: ListView(
                 children: [
-                  // const NavBarSection(),
-                  // SizedBox(height: _getHeight(context)),
-                  // const HeroSection(),
-                  // SizedBox(height: _getHeight(context)),
-                  // const FeatureSection(),
-                  SizedBox(height: _getHeight(context)), const AwardsSection()
+                  const NavBarSection(),
+                  SizedBox(height: _getHeight(context)),
+                  const HeroSection(),
+                  SizedBox(height: _getHeight(context)),
+                  const FeatureSection(),
+                  SizedBox(height: _getHeight(context)),
+                  const AwardsSection()
                 ],
               ),
             ),

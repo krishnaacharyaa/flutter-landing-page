@@ -9,22 +9,19 @@ class SectionHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          ResponsiveText(
-              text: heading,
-              textStyle:
-                  getResponsiveTextStyle(context, AppTextTheme.headline)),
-          const SizedBox(height: 16),
-          Container(
-            color: Theme.of(context).primaryColor,
-            height: 6,
-            width: 80,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-          )
-        ],
-      ),
+    return Column(
+      children: [
+        ResponsiveText(
+            text: heading,
+            textStyle: getResponsiveTextStyle(context, AppTextTheme.headline)),
+        const SizedBox(height: 16),
+        Container(
+          color: Theme.of(context).primaryColor,
+          height: 6,
+          width: 80,
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+        )
+      ],
     );
   }
 }

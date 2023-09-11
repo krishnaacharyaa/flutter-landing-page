@@ -70,6 +70,7 @@ const double heightOfCarousel = 400;
 const double sizeOfDotDesktopTablet = 20;
 const double sizeOfDotMobile = 16;
 
+// Awards Constants
 final List<AwardModel> awards = [
   AwardModel(imageUrl: 'images/award_1.png', title: "Stage 1 & 2 Winners"),
   AwardModel(
@@ -77,3 +78,4 @@ final List<AwardModel> awards = [
   AwardModel(
       imageUrl: "images/award_3.png", title: "Finalist in the virtual circuit")
 ];
+const String learnMore = "Learn More";
