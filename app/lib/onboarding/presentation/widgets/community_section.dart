@@ -1,3 +1,6 @@
+import 'package:app/core/util/responsive/responsive_layout.dart';
+import 'package:app/onboarding/presentation/widgets/common/section_header.dart';
+import 'package:app/onboarding/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:scroll_loop_auto_scroll/scroll_loop_auto_scroll.dart';
 
@@ -9,38 +12,52 @@ class CommunitySection extends StatefulWidget {
 }
 
 class _CommunitySectionState extends State<CommunitySection> {
-  final List<String> svgPaths = [
-    'images/cbs.png', // Replace with your png paths
-    'images/corridor.png',
-    'images/google.png',
-    'images/microsoft.png',
-    'images/nb.png',
-    'images/nick.png',
-    'images/ny.png',
-    'images/rga.png',
-    'images/vox.png'
-  ];
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const SectionHeader(heading: "Community"),
+        SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: const ScrollLoopAutoScroll(
+            gap: 0,
+            delayAfterScrollInput: Duration(seconds: 8),
+            delay: Duration(seconds: 0),
+            duration: Duration(minutes: 10),
+            scrollDirection: Axis.horizontal,
+            child: LogoWidget(),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class LogoWidget extends StatelessWidget {
+  const LogoWidget({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width,
-      child: ScrollLoopAutoScroll(
-        gap: 0,
-        delayAfterScrollInput: const Duration(seconds: 8),
-        delay: const Duration(seconds: 0),
-        duration: const Duration(minutes: 10),
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: svgPaths.map((svgPath) {
-            return Container(
-                height: 80,
-                width: MediaQuery.of(context).size.width / 10,
-                alignment: Alignment.center,
-                child: Image.asset(svgPath));
-          }).toList(),
-        ),
-      ),
+    return Row(
+      children: communityLogos.map((e) {
+        return Container(
+            width:
+                MediaQuery.of(context).size.width / _getNumberOfLogos(context),
+            alignment: Alignment.center,
+            child: Image.asset(
+              e,
+              fit: BoxFit.fill,
+              height: heightOfLogo,
+            ));
+      }).toList(),
     );
   }
+
+  int _getNumberOfLogos(BuildContext context) => isDesktop(context)
+      ? noOfLogosDesktop
+      : isTablet(context)
+          ? noOfLogosTablet
+          : noOfLogosMobile;
 }

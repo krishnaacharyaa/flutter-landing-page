@@ -1,6 +1,7 @@
 import 'package:app/core/util/constants.dart';
 import 'package:app/core/util/responsive/responsive_layout.dart';
 import 'package:app/onboarding/presentation/widgets/award_section.dart';
+import 'package:app/onboarding/presentation/widgets/community_section.dart';
 import 'package:app/onboarding/presentation/widgets/feature_section.dart';
 import 'package:app/onboarding/presentation/widgets/footer_section.dart';
 import 'package:app/onboarding/presentation/widgets/hero_section.dart';
@@ -30,17 +31,19 @@ class OnBoardingPage extends StatelessWidget {
                   ScrollConfiguration.of(context).copyWith(scrollbars: false),
               child: ListView(
                 children: [
-                  // const NavBarSection(),
-                  // SizedBox(height: _getHeight(context)),
-                  // const HeroSection(),
-                  // SizedBox(height: _getHeight(context)),
-                  // const FeatureSection(),
-                  // SizedBox(height: _getHeight(context)),
-                  // const AwardsSection(),
-                  // SizedBox(height: _getHeight(context)),
-                  // const FooterSection(),
+                  const NavBarSection(),
                   SizedBox(height: _getHeight(context)),
-                  const SubFeature()
+                  const HeroSection(),
+                  SizedBox(height: _getHeight(context)),
+                  const FeatureSection(),
+                  SizedBox(height: _getHeight(context)),
+                  const SubFeature(),
+                  SizedBox(height: _getHeight(context)),
+                  const CommunitySection(),
+                  const SizedBox(height: 32),
+                  const AwardsSection(),
+                  SizedBox(height: _getHeight(context)),
+                  const FooterSection(),
                 ],
               ),
             ),

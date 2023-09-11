@@ -102,3 +102,22 @@ const List<String> footerlogos = [
   "svg/instagram.svg",
   "svg/tiktok.svg"
 ];
+
+// Community Constants
+final List<String> communityLogos = [
+  'images/cbs.png', // Replace with your png paths
+  'images/corridor.png',
+  'images/google.png',
+  'images/microsoft.png',
+  'images/nb.png',
+  'images/nick.png',
+  'images/ny.png',
+  'images/rga.png',
+  'images/vox.png'
+];
+
+const int noOfLogosDesktop = 10;
+const int noOfLogosTablet = 8;
+const int noOfLogosMobile = 6;
+
+const double heightOfLogo = 400;

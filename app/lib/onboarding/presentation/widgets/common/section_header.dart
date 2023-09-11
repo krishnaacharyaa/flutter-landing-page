@@ -20,7 +20,8 @@ class SectionHeader extends StatelessWidget {
           height: 6,
           width: 80,
           padding: const EdgeInsets.symmetric(horizontal: 16),
-        )
+        ),
+        const SizedBox(height: 32),
       ],
     );
   }

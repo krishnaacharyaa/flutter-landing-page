@@ -17,7 +17,6 @@ class AwardsSection extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         const SectionHeader(heading: "Awards"),
-        const SizedBox(height: 32),
         _buildResponsiveAwardsContainer(context)
       ],
     );

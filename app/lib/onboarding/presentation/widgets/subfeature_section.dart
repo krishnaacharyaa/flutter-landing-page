@@ -11,7 +11,6 @@ class SubFeature extends StatelessWidget {
     return Column(
       children: [
         const SectionHeader(heading: subFeatureHeading),
-        const SizedBox(height: 32),
         _buildResponsiveSubFeatureWidget(context)
       ],
     );
