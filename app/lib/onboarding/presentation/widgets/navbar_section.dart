@@ -25,13 +25,13 @@ class NavBarSection extends StatelessWidget {
         const _Logo(),
         if (!isMobile(context))
           _NavBarItems(aboutKey: aboutKey, featureKey: featureKey),
-        if (!isMobile(context)) const _CallOutButtons(),
-        if (isMobile(context))
-          InkWell(
-              onTap: () {
-                Scaffold.of(context).openEndDrawer();
-              },
-              child: const Icon(Icons.menu))
+        !isMobile(context)
+            ? const _CallOutButtons()
+            : InkWell(
+                onTap: () {
+                  Scaffold.of(context).openEndDrawer();
+                },
+                child: const Icon(Icons.menu))
       ],
     );
   }
