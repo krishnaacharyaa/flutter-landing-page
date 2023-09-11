@@ -6,6 +6,7 @@ import 'package:app/onboarding/presentation/widgets/footer_section.dart';
 import 'package:app/onboarding/presentation/widgets/hero_section.dart';
 import 'package:app/onboarding/presentation/widgets/navbar_section.dart';
 import 'package:app/onboarding/presentation/widgets/side_bar.dart';
+import 'package:app/onboarding/presentation/widgets/subfeature_section.dart';
 import 'package:app/onboarding/utils/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -36,8 +37,10 @@ class OnBoardingPage extends StatelessWidget {
                   // const FeatureSection(),
                   // SizedBox(height: _getHeight(context)),
                   // const AwardsSection(),
+                  // SizedBox(height: _getHeight(context)),
+                  // const FooterSection(),
                   SizedBox(height: _getHeight(context)),
-                  const FooterSection()
+                  const SubFeature()
                 ],
               ),
             ),
