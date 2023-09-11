@@ -8,7 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class NavBarSection extends StatelessWidget {
-  const NavBarSection({super.key});
+  final GlobalKey featureKey;
+  final GlobalKey aboutKey;
+  const NavBarSection(
+      {super.key, required this.aboutKey, required this.featureKey});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +19,8 @@ class NavBarSection extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         const Logo(),
-        if (!isMobile(context)) const NavBarItems(),
+        if (!isMobile(context))
+          NavBarItems(aboutKey: aboutKey, featureKey: featureKey),
         if (!isMobile(context)) const CallOutButtons(),
         if (isMobile(context))
           InkWell(
@@ -41,7 +45,10 @@ class CallOutButtons extends StatelessWidget {
 }
 
 class NavBarItems extends StatelessWidget {
-  const NavBarItems({super.key});
+  final GlobalKey featureKey;
+  final GlobalKey aboutKey;
+  const NavBarItems(
+      {super.key, required this.aboutKey, required this.featureKey});
 
   @override
   Widget build(BuildContext context) {
@@ -51,10 +58,23 @@ class NavBarItems extends StatelessWidget {
             .map(
               (item) => Row(
                 children: [
-                  ResponsiveText(
-                    text: item,
-                    textStyle:
-                        getResponsiveTextStyle(context, AppTextTheme.title),
+                  InkWell(
+                    onTap: () {
+                      Scrollable.ensureVisible(
+                        item == product
+                            ? featureKey.currentContext!
+                            : item == about
+                                ? aboutKey.currentContext!
+                                : context,
+                        duration: const Duration(milliseconds: 1000),
+                        curve: Curves.easeInOut,
+                      );
+                    },
+                    child: ResponsiveText(
+                      text: item,
+                      textStyle:
+                          getResponsiveTextStyle(context, AppTextTheme.title),
+                    ),
                   ),
                   const SizedBox(width: 16)
                 ],

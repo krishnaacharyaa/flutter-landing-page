@@ -16,7 +16,10 @@ const BorderRadius curvedBorderRadius = BorderRadius.only(
 
 // Widget Constants
 // Nav elements
-const List<String> navItems = ["Product", "Subscribe", "About"];
+const String product = "Product";
+const String subscribe = "Subscribe";
+const String about = "About";
+const List<String> navItems = [product, subscribe, about];
 const String logoTitle = "ImagineWorks";
 const String logoIcon = "assets/svg/logo.svg";
 // NavBar Constants

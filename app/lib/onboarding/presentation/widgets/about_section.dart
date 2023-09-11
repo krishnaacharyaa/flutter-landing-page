@@ -6,11 +6,13 @@ import 'package:app/onboarding/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class AboutSection extends StatelessWidget {
-  const AboutSection({super.key});
+  final GlobalKey aboutKey;
+  const AboutSection({super.key, required this.aboutKey});
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      key: aboutKey,
       children: [
         const SectionHeader(heading: "About Us"),
         ResponsiveText(

@@ -9,7 +9,8 @@ import 'package:app/core/util/responsive/responsive_layout.dart';
 import 'package:app/onboarding/domain/model/feature_model.dart';
 
 class FeatureSection extends StatefulWidget {
-  const FeatureSection({Key? key}) : super(key: key);
+  final GlobalKey featureKey;
+  const FeatureSection({Key? key, required this.featureKey}) : super(key: key);
 
   @override
   State<FeatureSection> createState() => _FeatureSectionState();
@@ -22,6 +23,7 @@ class _FeatureSectionState extends State<FeatureSection> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      key: widget.featureKey,
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[

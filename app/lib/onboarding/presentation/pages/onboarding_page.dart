@@ -13,14 +13,16 @@ import 'package:app/onboarding/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingPage extends StatelessWidget {
-  const OnBoardingPage({super.key});
+  final GlobalKey aboutKey = GlobalKey();
+  final GlobalKey featureKey = GlobalKey();
+  OnBoardingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: const Drawer(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-        child: SideBar(),
+      endDrawer: Drawer(
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+        child: SideBar(aboutKey: aboutKey, featureKey: featureKey),
       ),
       body: Center(
         child: ConstrainedBox(
@@ -30,24 +32,26 @@ class OnBoardingPage extends StatelessWidget {
             child: ScrollConfiguration(
               behavior:
                   ScrollConfiguration.of(context).copyWith(scrollbars: false),
-              child: ListView(
-                children: [
-                  const NavBarSection(),
-                  SizedBox(height: _getHeight(context)),
-                  const HeroSection(),
-                  SizedBox(height: _getHeight(context)),
-                  const FeatureSection(),
-                  SizedBox(height: _getHeight(context)),
-                  const SubFeature(),
-                  SizedBox(height: _getHeight(context)),
-                  const CommunitySection(),
-                  const SizedBox(height: 32),
-                  const AboutSection(),
-                  SizedBox(height: _getHeight(context)),
-                  const AwardsSection(),
-                  SizedBox(height: _getHeight(context)),
-                  const FooterSection(),
-                ],
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    NavBarSection(aboutKey: aboutKey, featureKey: featureKey),
+                    SizedBox(height: _getHeight(context)),
+                    const HeroSection(),
+                    SizedBox(height: _getHeight(context)),
+                    FeatureSection(featureKey: featureKey),
+                    SizedBox(height: _getHeight(context)),
+                    const SubFeature(),
+                    SizedBox(height: _getHeight(context)),
+                    const CommunitySection(),
+                    const SizedBox(height: 32),
+                    AboutSection(aboutKey: aboutKey),
+                    SizedBox(height: _getHeight(context)),
+                    const AwardsSection(),
+                    SizedBox(height: _getHeight(context)),
+                    const FooterSection(),
+                  ],
+                ),
               ),
             ),
           ),

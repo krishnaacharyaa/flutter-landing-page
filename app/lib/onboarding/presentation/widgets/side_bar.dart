@@ -3,16 +3,18 @@ import 'package:app/onboarding/presentation/widgets/common/call_out_button.dart'
 import 'package:flutter/material.dart';
 
 class SideBar extends StatelessWidget {
-  const SideBar({super.key});
+  final GlobalKey featureKey;
+  final GlobalKey aboutKey;
+  const SideBar({super.key, required this.aboutKey, required this.featureKey});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
-          child: NavBarItems(),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: NavBarItems(aboutKey: aboutKey, featureKey: featureKey),
         ),
-        bottomNavigationBar: Padding(
+        bottomNavigationBar: const Padding(
             padding: EdgeInsets.all(
               16.0,
             ),
@@ -37,7 +39,10 @@ class CallOutButtons extends StatelessWidget {
 }
 
 class NavBarItems extends StatelessWidget {
-  const NavBarItems({super.key});
+  final GlobalKey featureKey;
+  final GlobalKey aboutKey;
+  const NavBarItems(
+      {super.key, required this.aboutKey, required this.featureKey});
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -51,7 +56,18 @@ class NavBarItems extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Scrollable.ensureVisible(
+                          item == product
+                              ? featureKey.currentContext!
+                              : item == about
+                                  ? aboutKey.currentContext!
+                                  : context,
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.easeInOut,
+                        );
+                        Navigator.pop(context);
+                      },
                       icon: const Icon(
                         Icons.arrow_forward_ios_sharp,
                         size: 20,
