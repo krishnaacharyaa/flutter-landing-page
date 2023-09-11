@@ -24,33 +24,35 @@ class OnBoardingPage extends StatelessWidget {
         shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
         child: SideBar(aboutKey: aboutKey, featureKey: featureKey),
       ),
-      body: Center(
-        child: ConstrainedBox(
-          constraints: _getConstraints(context),
-          child: Padding(
-            padding: _getPadding(context),
-            child: ScrollConfiguration(
-              behavior:
-                  ScrollConfiguration.of(context).copyWith(scrollbars: false),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    NavBarSection(aboutKey: aboutKey, featureKey: featureKey),
-                    SizedBox(height: _getHeight(context)),
-                    const HeroSection(),
-                    SizedBox(height: _getHeight(context)),
-                    FeatureSection(featureKey: featureKey),
-                    SizedBox(height: _getHeight(context)),
-                    const SubFeature(),
-                    SizedBox(height: _getHeight(context)),
-                    const CommunitySection(),
-                    const SizedBox(height: 32),
-                    AboutSection(aboutKey: aboutKey),
-                    SizedBox(height: _getHeight(context)),
-                    const AwardsSection(),
-                    SizedBox(height: _getHeight(context)),
-                    const FooterSection(),
-                  ],
+      body: SafeArea(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: _getConstraints(context),
+            child: Padding(
+              padding: _getPadding(context),
+              child: ScrollConfiguration(
+                behavior:
+                    ScrollConfiguration.of(context).copyWith(scrollbars: false),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      NavBarSection(aboutKey: aboutKey, featureKey: featureKey),
+                      SizedBox(height: _getHeight(context)),
+                      const HeroSection(),
+                      SizedBox(height: _getHeight(context)),
+                      FeatureSection(featureKey: featureKey),
+                      SizedBox(height: _getHeight(context)),
+                      const SubFeature(),
+                      SizedBox(height: _getHeight(context)),
+                      const CommunitySection(),
+                      const SizedBox(height: 32),
+                      AboutSection(aboutKey: aboutKey),
+                      SizedBox(height: _getHeight(context)),
+                      const AwardsSection(),
+                      SizedBox(height: _getHeight(context)),
+                      const FooterSection(),
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -77,12 +77,13 @@ const int timeToWaitForEachCarousel = 10;
 // Awards Constants
 final List<AwardModel> awards = [
   AwardModel(
-      imageUrl: 'assets/images/award_1.png', title: "Stage 1 & 2 Winners"),
+      imageUrl: 'assets/images/awards/award_1.png',
+      title: "Stage 1 & 2 Winners"),
   AwardModel(
-      imageUrl: "assets/images/award_2.png",
+      imageUrl: "assets/images/awards/award_2.png",
       title: "Second place in 3/4 events"),
   AwardModel(
-      imageUrl: "assets/images/award_3.png",
+      imageUrl: "assets/images/awards/award_3.png",
       title: "Finalist in the virtual circuit")
 ];
 const String learnMore = "Learn More";
@@ -101,26 +102,26 @@ const List<String> footerItems = [
   "Code of Conduct"
 ];
 const List<String> footerlogos = [
-  "assets/svg/reddit.svg",
-  "assets/svg/linkedIn.svg",
-  "assets/svg/facebook.svg",
-  "assets/svg/youtube.svg",
-  "assets/svg/twitter.svg",
-  "assets/svg/instagram.svg",
-  "assets/svg/tiktok.svg"
+  "assets/svg/social_media_logos/reddit.svg",
+  "assets/svg/social_media_logos/linkedIn.svg",
+  "assets/svg/social_media_logos/facebook.svg",
+  "assets/svg/social_media_logos/youtube.svg",
+  "assets/svg/social_media_logos/twitter.svg",
+  "assets/svg/social_media_logos/instagram.svg",
+  "assets/svg/social_media_logos/tiktok.svg"
 ];
 
 // Community Constants
 final List<String> communityLogos = [
-  'assets/images/cbs.png', // Replace with your png paths
-  'assets/images/corridor.png',
-  'assets/images/google.png',
-  'assets/images/microsoft.png',
-  'assets/images/nb.png',
-  'assets/images/nick.png',
-  'assets/images/ny.png',
-  'assets/images/rga.png',
-  'assets/images/vox.png'
+  'assets/images/community_logos/cbs.png', // Replace with your png paths
+  'assets/images/community_logos/corridor.png',
+  'assets/images/community_logos/google.png',
+  'assets/images/community_logos/microsoft.png',
+  'assets/images/community_logos/nb.png',
+  'assets/images/community_logos/nick.png',
+  'assets/images/community_logos/ny.png',
+  'assets/images/community_logos/rga.png',
+  'assets/images/community_logos/vox.png'
 ];
 
 const int noOfLogosDesktop = 8;
