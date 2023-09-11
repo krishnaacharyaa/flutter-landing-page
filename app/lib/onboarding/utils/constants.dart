@@ -80,15 +80,19 @@ final List<AwardModel> awards = [
 ];
 const String learnMore = "Learn More";
 
-// Footer Constants
+// SubFeature Constants
+const String subFeatureHeading = "Create Personal Image";
+const String subFeatureGIF1 = "gifs/subfeature_1.gif";
+const String subFeatureGIF2 = "gifs/subfeature_2.gif";
+const double heightOfGIF = 400;
 
+// Footer Constants
 const footerTitle = "\u00a9 2023 AAUNO Inc. All rights reserved.";
 const List<String> footerItems = [
   "Terms of Service",
   "Privacy Policy",
   "Code of Conduct"
 ];
-
 const List<String> footerlogos = [
   "svg/reddit.svg",
   "svg/linkedIn.svg",

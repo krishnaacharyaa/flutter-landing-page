@@ -10,7 +10,7 @@ class SubFeature extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SectionHeader(heading: "Create Personal Image"),
+        const SectionHeader(heading: subFeatureHeading),
         const SizedBox(height: 32),
         _buildResponsiveSubFeatureWidget(context)
       ],
@@ -21,16 +21,16 @@ class SubFeature extends StatelessWidget {
     return !isMobile(context)
         ? const Row(
             children: [
-              Flexible(child: FeatureWidget(gifPath: "gifs/subfeature_1.gif")),
+              Flexible(child: FeatureWidget(gifPath: subFeatureGIF1)),
               SizedBox(width: 56),
-              Flexible(child: FeatureWidget(gifPath: "gifs/subfeature_2.gif"))
+              Flexible(child: FeatureWidget(gifPath: subFeatureGIF2))
             ],
           )
         : const Column(
             children: [
-              FeatureWidget(gifPath: "gifs/subfeature_1.gif"),
+              FeatureWidget(gifPath: subFeatureGIF1),
               SizedBox(height: 32),
-              FeatureWidget(gifPath: "gifs/subfeature_2.gif")
+              FeatureWidget(gifPath: subFeatureGIF2)
             ],
           );
   }
@@ -47,7 +47,7 @@ class FeatureWidget extends StatelessWidget {
         child: Image.asset(
           gifPath,
           fit: BoxFit.fill,
-          height: 400,
+          height: heightOfGIF,
         ));
   }
 }
