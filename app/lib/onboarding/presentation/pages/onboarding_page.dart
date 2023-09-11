@@ -94,10 +94,10 @@ EdgeInsets _getPadding(BuildContext context) {
 
 double _getHeight(BuildContext context) {
   if (isDesktop(context)) {
-    return heightBetweenElementsDesktop;
+    return heightBetweenSectionsDesktop;
   }
   if (isTablet(context)) {
-    return heightBetweenElementsTablet;
+    return heightBetweenSectionsTablet;
   }
-  return heightBetweenElementsMobile;
+  return heightBetweenSectionsMobile;
 }

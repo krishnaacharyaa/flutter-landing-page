@@ -11,6 +11,10 @@ class HeroSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return _buildResponsiveHeroWidget(context);
+  }
+
+  Widget _buildResponsiveHeroWidget(BuildContext context) {
     return !isMobile(context)
         ? Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -61,11 +65,11 @@ class _Content extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ResponsiveHeaderText(
-            text: heading,
+            text: heroHeading,
             textStyle: getResponsiveTextStyle(context, AppTextTheme.display)),
         SizedBox(height: !isMobile(context) ? 32 : 16),
         ResponsiveText(
-            text: subHeading,
+            text: heroSubHeading,
             textStyle: getResponsiveTextStyle(context, AppTextTheme.headline)),
         SizedBox(height: !isMobile(context) ? 64 : 32),
         const AppFilledButton()

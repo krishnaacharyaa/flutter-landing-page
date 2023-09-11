@@ -23,19 +23,19 @@ class FooterSection extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.only(top: 16),
-                child: FooterTitle(),
+                child: _FooterTitle(),
               ),
               Padding(
                   padding: EdgeInsets.only(top: 16),
-                  child: NavItemsAndLogosWidget()),
+                  child: _NavItemsAndLogosWidget()),
               AppFilledButton()
             ],
           )
         : const Column(
             children: [
-              FooterTitle(),
+              _FooterTitle(),
               SizedBox(height: 16),
-              NavItemsAndLogosWidget(),
+              _NavItemsAndLogosWidget(),
               SizedBox(height: 16),
               AppFilledButton()
             ],
@@ -43,10 +43,8 @@ class FooterSection extends StatelessWidget {
   }
 }
 
-class FooterTitle extends StatelessWidget {
-  const FooterTitle({
-    super.key,
-  });
+class _FooterTitle extends StatelessWidget {
+  const _FooterTitle();
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +54,8 @@ class FooterTitle extends StatelessWidget {
   }
 }
 
-class NavItemsAndLogosWidget extends StatelessWidget {
-  const NavItemsAndLogosWidget({super.key});
+class _NavItemsAndLogosWidget extends StatelessWidget {
+  const _NavItemsAndLogosWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +76,8 @@ class NavItemsAndLogosWidget extends StatelessWidget {
         Wrap(
           spacing: 16,
           alignment: WrapAlignment.center,
-          children: footerlogos.map((e) => SvgPicture.asset(e)).toList(),
+          children:
+              footerSocialMediaLogos.map((e) => SvgPicture.asset(e)).toList(),
         )
       ],
     );

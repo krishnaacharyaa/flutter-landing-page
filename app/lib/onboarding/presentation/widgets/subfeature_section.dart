@@ -20,24 +20,24 @@ class SubFeature extends StatelessWidget {
     return !isMobile(context)
         ? const Row(
             children: [
-              Flexible(child: FeatureWidget(gifPath: subFeatureGIF1)),
+              Flexible(child: _FeatureWidget(gifPath: subFeatureGIF1)),
               SizedBox(width: 56),
-              Flexible(child: FeatureWidget(gifPath: subFeatureGIF2))
+              Flexible(child: _FeatureWidget(gifPath: subFeatureGIF2))
             ],
           )
         : const Column(
             children: [
-              FeatureWidget(gifPath: subFeatureGIF1),
+              _FeatureWidget(gifPath: subFeatureGIF1),
               SizedBox(height: 32),
-              FeatureWidget(gifPath: subFeatureGIF2)
+              _FeatureWidget(gifPath: subFeatureGIF2)
             ],
           );
   }
 }
 
-class FeatureWidget extends StatelessWidget {
+class _FeatureWidget extends StatelessWidget {
   final String gifPath;
-  const FeatureWidget({super.key, required this.gifPath});
+  const _FeatureWidget({required this.gifPath});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class FeatureWidget extends StatelessWidget {
         child: Image.asset(
           gifPath,
           fit: BoxFit.fill,
-          height: heightOfGIF,
+          height: heightOfsubFeatureGIF,
         ));
   }
 }

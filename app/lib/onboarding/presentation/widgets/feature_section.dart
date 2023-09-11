@@ -58,7 +58,7 @@ class _FeatureSectionState extends State<FeatureSection> {
                 children: <Widget>[
                   Flexible(
                     flex: 1,
-                    child: GIFContainer(gifContent: features[index].gif),
+                    child: _GIFContainer(gifContent: features[index].gif),
                   ),
                   SizedBox(width: isDesktop(context) ? 96 : 72),
                   Flexible(
@@ -69,16 +69,16 @@ class _FeatureSectionState extends State<FeatureSection> {
               )
             : Column(
                 children: [
-                  GIFContainer(gifContent: features[index].gif),
+                  _GIFContainer(gifContent: features[index].gif),
                 ],
               );
       },
       options: CarouselOptions(
         viewportFraction: 1,
-        height: heightOfCarousel,
+        height: heightOfFeatureCarousel,
         enlargeCenterPage: true,
         autoPlay: true,
-        autoPlayInterval: const Duration(seconds: timeToWaitForEachCarousel),
+        autoPlayInterval: const Duration(seconds: delayTimeInFeatureCarousel),
         autoPlayCurve: Curves.fastOutSlowIn,
         enableInfiniteScroll: false,
         initialPage: 0,
@@ -108,7 +108,7 @@ class _FeatureSectionState extends State<FeatureSection> {
   List<Widget> _buildCarouselNavigators() {
     return [
       Positioned(
-        top: isMobile(context) ? heightOfCarousel / 2 : null,
+        top: isMobile(context) ? heightOfFeatureCarousel / 2 : null,
         left: 0,
         child: Visibility(
           visible: _currentIndex != 0,
@@ -130,7 +130,7 @@ class _FeatureSectionState extends State<FeatureSection> {
         ),
       ),
       Positioned(
-        top: isMobile(context) ? heightOfCarousel / 2 : null,
+        top: isMobile(context) ? heightOfFeatureCarousel / 2 : null,
         right: 0,
         child: Visibility(
           visible: _currentIndex != features.length - 1,
@@ -167,8 +167,12 @@ class _DotContainer extends StatelessWidget {
         final int index = entry.key;
         final bool isActive = currentIndex == index;
         return Container(
-          width: !isMobile(context) ? sizeOfDotDesktopTablet : sizeOfDotMobile,
-          height: !isMobile(context) ? sizeOfDotDesktopTablet : sizeOfDotMobile,
+          width: !isMobile(context)
+              ? sizeOfFeatureDotDesktopTablet
+              : sizeOfFeatureDotMobile,
+          height: !isMobile(context)
+              ? sizeOfFeatureDotDesktopTablet
+              : sizeOfFeatureDotMobile,
           margin: const EdgeInsets.symmetric(horizontal: 16.0),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
@@ -246,10 +250,9 @@ class _ContentContainer extends StatelessWidget {
   }
 }
 
-class GIFContainer extends StatelessWidget {
+class _GIFContainer extends StatelessWidget {
   final String gifContent;
-  const GIFContainer({
-    super.key,
+  const _GIFContainer({
     required this.gifContent,
   });
 
@@ -260,7 +263,7 @@ class GIFContainer extends StatelessWidget {
       child: Image.asset(
         gifContent,
         fit: BoxFit.fill,
-        height: heightOfCarousel,
+        height: heightOfFeatureCarousel,
         width: double.infinity,
       ),
     );

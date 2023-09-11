@@ -17,12 +17,12 @@ class AwardsSection extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         const SectionHeader(heading: "Awards"),
-        _buildResponsiveAwardsContainer(context)
+        _buildResponsiveAwardsWidget(context)
       ],
     );
   }
 
-  Widget _buildResponsiveAwardsContainer(BuildContext context) {
+  Widget _buildResponsiveAwardsWidget(BuildContext context) {
     return !isMobile(context)
         ? IntrinsicHeight(
             child: Row(

@@ -15,13 +15,17 @@ class NavBarSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return _buildResponsiveNavBarWidget(context);
+  }
+
+  Widget _buildResponsiveNavBarWidget(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Logo(),
+        const _Logo(),
         if (!isMobile(context))
-          NavBarItems(aboutKey: aboutKey, featureKey: featureKey),
-        if (!isMobile(context)) const CallOutButtons(),
+          _NavBarItems(aboutKey: aboutKey, featureKey: featureKey),
+        if (!isMobile(context)) const _CallOutButtons(),
         if (isMobile(context))
           InkWell(
               onTap: () {
@@ -33,8 +37,8 @@ class NavBarSection extends StatelessWidget {
   }
 }
 
-class CallOutButtons extends StatelessWidget {
-  const CallOutButtons({super.key});
+class _CallOutButtons extends StatelessWidget {
+  const _CallOutButtons();
 
   @override
   Widget build(BuildContext context) {
@@ -44,11 +48,10 @@ class CallOutButtons extends StatelessWidget {
   }
 }
 
-class NavBarItems extends StatelessWidget {
+class _NavBarItems extends StatelessWidget {
   final GlobalKey featureKey;
   final GlobalKey aboutKey;
-  const NavBarItems(
-      {super.key, required this.aboutKey, required this.featureKey});
+  const _NavBarItems({required this.aboutKey, required this.featureKey});
 
   @override
   Widget build(BuildContext context) {
@@ -84,8 +87,8 @@ class NavBarItems extends StatelessWidget {
   }
 }
 
-class Logo extends StatelessWidget {
-  const Logo({super.key});
+class _Logo extends StatelessWidget {
+  const _Logo();
 
   @override
   Widget build(BuildContext context) {
@@ -99,15 +102,15 @@ class Logo extends StatelessWidget {
         const SizedBox(width: 16),
         SvgPicture.asset(
           logoIcon,
-          height: sizeOfLogo(context),
-          width: sizeOfLogo(context),
+          height: _sizeOfLogo(context),
+          width: _sizeOfLogo(context),
         ),
       ],
     );
   }
 }
 
-double sizeOfLogo(BuildContext context) {
+double _sizeOfLogo(BuildContext context) {
   if (isDesktop(context)) {
     return logoSizeDesktop;
   }

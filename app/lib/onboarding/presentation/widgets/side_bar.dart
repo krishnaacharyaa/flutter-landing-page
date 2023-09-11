@@ -12,18 +12,18 @@ class SideBar extends StatelessWidget {
     return Scaffold(
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: NavBarItems(aboutKey: aboutKey, featureKey: featureKey),
+          child: _NavBarItems(aboutKey: aboutKey, featureKey: featureKey),
         ),
         bottomNavigationBar: const Padding(
             padding: EdgeInsets.all(
               16.0,
             ),
-            child: CallOutButtons()));
+            child: _CallOutButtons()));
   }
 }
 
-class CallOutButtons extends StatelessWidget {
-  const CallOutButtons({super.key});
+class _CallOutButtons extends StatelessWidget {
+  const _CallOutButtons();
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +38,10 @@ class CallOutButtons extends StatelessWidget {
   }
 }
 
-class NavBarItems extends StatelessWidget {
+class _NavBarItems extends StatelessWidget {
   final GlobalKey featureKey;
   final GlobalKey aboutKey;
-  const NavBarItems(
-      {super.key, required this.aboutKey, required this.featureKey});
+  const _NavBarItems({required this.aboutKey, required this.featureKey});
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -63,7 +62,7 @@ class NavBarItems extends StatelessWidget {
                               : item == about
                                   ? aboutKey.currentContext!
                                   : context,
-                          duration: const Duration(milliseconds: 500),
+                          duration: const Duration(milliseconds: 1000),
                           curve: Curves.easeInOut,
                         );
                         Navigator.pop(context);

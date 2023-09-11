@@ -17,26 +17,28 @@ class _CommunitySectionState extends State<CommunitySection> {
     return Column(
       children: [
         const SectionHeader(heading: "Community"),
-        SizedBox(
-          width: MediaQuery.of(context).size.width,
-          child: const ScrollLoopAutoScroll(
-            gap: 0,
-            delayAfterScrollInput: Duration(seconds: 8),
-            delay: Duration(seconds: 0),
-            duration: Duration(minutes: 10),
-            scrollDirection: Axis.horizontal,
-            child: LogoWidget(),
-          ),
-        ),
+        _buildResponsiveCommunityWidget(context),
       ],
+    );
+  }
+
+  Widget _buildResponsiveCommunityWidget(BuildContext context) {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: const ScrollLoopAutoScroll(
+        gap: 0,
+        delayAfterScrollInput: Duration(seconds: 8),
+        delay: Duration(seconds: 0),
+        duration: Duration(minutes: 10),
+        scrollDirection: Axis.horizontal,
+        child: _LogoWidget(),
+      ),
     );
   }
 }
 
-class LogoWidget extends StatelessWidget {
-  const LogoWidget({
-    super.key,
-  });
+class _LogoWidget extends StatelessWidget {
+  const _LogoWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -49,15 +51,15 @@ class LogoWidget extends StatelessWidget {
             child: Image.asset(
               e,
               fit: BoxFit.fill,
-              height: heightOfLogo,
+              height: heightOfCommunityLogo,
             ));
       }).toList(),
     );
   }
 
   int _getNumberOfLogos(BuildContext context) => isDesktop(context)
-      ? noOfLogosDesktop
+      ? noOfCommunityLogosDesktop
       : isTablet(context)
-          ? noOfLogosTablet
-          : noOfLogosMobile;
+          ? noOfCommunityLogosTablet
+          : noOfCommunityLogosMobile;
 }

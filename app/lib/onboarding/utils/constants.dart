@@ -2,11 +2,13 @@ import 'package:app/onboarding/domain/model/award_model.dart';
 import 'package:app/onboarding/domain/model/feature_model.dart';
 import 'package:flutter/material.dart';
 // Pages constants
-// OnBoarding
 
-const double heightBetweenElementsDesktop = 56;
-const double heightBetweenElementsTablet = 48;
-const double heightBetweenElementsMobile = 32;
+// OnBoarding
+const double heightBetweenSectionsDesktop = 56;
+const double heightBetweenSectionsTablet = 48;
+const double heightBetweenSectionsMobile = 32;
+
+// Widget Constants
 
 const BorderRadius curvedBorderRadius = BorderRadius.only(
   topLeft: Radius.circular(213),
@@ -14,25 +16,22 @@ const BorderRadius curvedBorderRadius = BorderRadius.only(
   bottomRight: Radius.circular(216),
 );
 
-// Widget Constants
-// Nav elements
+// NavBar Constants
 const String product = "Product";
 const String subscribe = "Subscribe";
 const String about = "About";
 const List<String> navItems = [product, subscribe, about];
 const String logoTitle = "ImagineWorks";
 const String logoIcon = "assets/svg/logo.svg";
-// NavBar Constants
 const double logoSizeDesktop = 50;
 const double logoSizeTablet = 40;
 const double logoSizeMobile = 30;
 
 // Hero Constants
-const String heading = "Imagination Meets Intelligence";
-const String subHeading =
+const String heroHeading = "Imagination Meets Intelligence";
+const String heroSubHeading =
     "As AI as your collaborator to create anything you can imagine";
 const String heroImage = "assets/images/hero_image.png";
-
 const double heroImageHeightDesktop = 500;
 const double heroImageHeightTablet = 450;
 const double heroImageHeightMobile = 400;
@@ -68,11 +67,10 @@ final List<FeatureModel> features = [
       subHeading: "Automatically remove unwanted objects throughout your clip",
       details: ["Import your clips", "Inpaint", "Click Export"]),
 ];
-
-const double heightOfCarousel = 400;
-const double sizeOfDotDesktopTablet = 20;
-const double sizeOfDotMobile = 16;
-const int timeToWaitForEachCarousel = 10;
+const double heightOfFeatureCarousel = 400;
+const double sizeOfFeatureDotDesktopTablet = 20;
+const double sizeOfFeatureDotMobile = 16;
+const int delayTimeInFeatureCarousel = 10;
 
 // Awards Constants
 final List<AwardModel> awards = [
@@ -92,7 +90,7 @@ const String learnMore = "Learn More";
 const String subFeatureHeading = "Create Personal Image";
 const String subFeatureGIF1 = "assets/gifs/subfeature_1.gif";
 const String subFeatureGIF2 = "assets/gifs/subfeature_2.gif";
-const double heightOfGIF = 400;
+const double heightOfsubFeatureGIF = 400;
 
 // Footer Constants
 const footerTitle = "\u00a9 2023 AAUNO Inc. All rights reserved.";
@@ -101,7 +99,7 @@ const List<String> footerItems = [
   "Privacy Policy",
   "Code of Conduct"
 ];
-const List<String> footerlogos = [
+const List<String> footerSocialMediaLogos = [
   "assets/svg/social_media_logos/reddit.svg",
   "assets/svg/social_media_logos/linkedIn.svg",
   "assets/svg/social_media_logos/facebook.svg",
@@ -123,12 +121,10 @@ final List<String> communityLogos = [
   'assets/images/community_logos/rga.png',
   'assets/images/community_logos/vox.png'
 ];
-
-const int noOfLogosDesktop = 8;
-const int noOfLogosTablet = 6;
-const int noOfLogosMobile = 4;
-
-const double heightOfLogo = 80;
+const int noOfCommunityLogosDesktop = 8;
+const int noOfCommunityLogosTablet = 6;
+const int noOfCommunityLogosMobile = 4;
+const double heightOfCommunityLogo = 80;
 
 //About Us Constants
 const aboutUsString =
