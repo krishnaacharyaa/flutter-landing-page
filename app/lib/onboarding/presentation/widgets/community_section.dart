@@ -4,14 +4,8 @@ import '../../utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:scroll_loop_auto_scroll/scroll_loop_auto_scroll.dart';
 
-class CommunitySection extends StatefulWidget {
+class CommunitySection extends StatelessWidget {
   const CommunitySection({Key? key}) : super(key: key);
-
-  @override
-  State<CommunitySection> createState() => _CommunitySectionState();
-}
-
-class _CommunitySectionState extends State<CommunitySection> {
   @override
   Widget build(BuildContext context) {
     return Column(
