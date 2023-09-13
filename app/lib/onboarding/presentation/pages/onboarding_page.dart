@@ -13,10 +13,23 @@ import '../widgets/navbar_section.dart';
 import '../widgets/side_bar.dart';
 import '../widgets/subfeature_section.dart';
 
-class OnBoardingPage extends StatelessWidget {
+class OnBoardingPage extends StatefulWidget {
+  const OnBoardingPage({super.key});
+
+  @override
+  State<OnBoardingPage> createState() => _OnBoardingPageState();
+}
+
+class _OnBoardingPageState extends State<OnBoardingPage> {
   final GlobalKey aboutKey = GlobalKey();
+
   final GlobalKey featureKey = GlobalKey();
-  OnBoardingPage({super.key});
+
+  @override
+  void initState() {
+    _cacheAppImagesAtInit(context);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,4 +113,16 @@ double _getHeight(BuildContext context) {
     return heightBetweenSectionsTablet;
   }
   return heightBetweenSectionsMobile;
+}
+
+_cacheAppImagesAtInit(BuildContext context) {
+  Future.forEach(features, (feature) async {
+    await precacheImage(AssetImage(feature.gif), context);
+  });
+  Future.forEach(awards, (award) async {
+    await precacheImage(AssetImage(award.imageUrl), context);
+  });
+  precacheImage(const AssetImage(subFeatureGIF1), context);
+  precacheImage(const AssetImage(subFeatureGIF1), context);
+  precacheImage(const AssetImage(heroImage), context);
 }

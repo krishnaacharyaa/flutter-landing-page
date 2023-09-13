@@ -17,7 +17,7 @@ void main() {
     tester.view.physicalSize = const Size(1300, 800);
 
     await tester.pumpWidget(
-      MaterialApp(
+      const MaterialApp(
         home: OnBoardingPage(),
       ),
     );
@@ -39,7 +39,7 @@ void main() {
     tester.view.physicalSize = const Size(1300, 800);
 
     await tester.pumpWidget(
-      MaterialApp(home: OnBoardingPage()),
+      const MaterialApp(home: OnBoardingPage()),
     );
 
     await tester.tap(find.byIcon(Icons.menu));

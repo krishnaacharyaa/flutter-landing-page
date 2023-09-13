@@ -13,6 +13,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         theme: CustomTheme.getTheme(),
         debugShowCheckedModeBanner: false,
-        home: OnBoardingPage());
+        home: const OnBoardingPage());
   }
 }
